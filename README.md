@@ -106,7 +106,7 @@ The dashboard spans **5 pages** — Employees, Attrition, Salary, Satisfaction, 
 
 ### Page 2 — Attrition Analysis
 
-![Attrition Page](Attrition.png)
+![Attrirtion Page](Attrirtion.png)
 
 **KPIs:** Total Employees (1.472K) · Attrition Rate (16.10%) · Distance from Home (9.20) · Overtime Rate (28%)
 
