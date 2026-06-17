@@ -167,6 +167,26 @@ export const AttritionTab: React.FC<AttritionTabProps> = ({ data, lang }) => {
     }).sort((a, b) => b.rate - a.rate); // Sort by attrition rate descending
   }, [data]);
 
+  // 7. Flight Risk Score Calculation
+  const flightRiskData = useMemo(() => {
+    return data
+      .filter(e => e.Attrition === 'No')
+      .map(e => {
+        const factors = [
+          { name: 'Low Salary', active: e.MonthlyIncome < 5000 },
+          { name: 'Long Commute', active: e.DistanceFromHome > 20 },
+          { name: 'Low Satisfaction', active: e.JobSatisfaction <= 2 },
+          { name: 'Poor Work-Life', active: e.WorkLifeBalance <= 2 },
+          { name: 'No Recent Promotion', active: e.YearsSinceLastPromotion > 3 },
+          { name: 'Overtime', active: e.OverTime === 'Yes' },
+          { name: 'Low Rating', active: e.PerformanceRating <= 3 },
+        ];
+        const riskScore = factors.filter(f => f.active).length;
+        return { id: e.EmpID, name: `#${e.EmployeeNumber}`, dept: e.Department, score: riskScore, factors };
+      })
+      .sort((a, b) => b.score - a.score);
+  }, [data]);
+
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
       {/* KPIs Grid */}
@@ -300,6 +320,42 @@ export const AttritionTab: React.FC<AttritionTabProps> = ({ data, lang }) => {
               </BarChart>
             </ResponsiveContainer>
           </div>
+        </div>
+      </div>
+
+      {/* Phase 7.2: Flight Risk Dashboard (from screenshots/Employee Flight Risk Dashboard.png) */}
+      <div className="glass-panel-noclick" style={{ padding: '24px' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '20px' }}>
+          <div style={{ width: '20px', height: '20px', borderRadius: '50%', background: '#F59E0B', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'white', fontSize: '12px' }}>⚠</div>
+          <h3 style={{ fontSize: '18px', fontWeight: 700, color: 'var(--text-main)', margin: 0 }}>{isRtl ? 'مؤشر مخاطر الموظفين' : 'Flight Risk Dashboard'}</h3>
+        </div>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '12px', marginBottom: '20px' }}>
+          <div style={{ padding: '16px', borderRadius: '10px', background: 'rgba(239,68,68,0.1)', border: '1px solid rgba(239,68,68,0.3)' }}>
+            <div style={{ fontSize: '12px', color: '#EF4444', fontWeight: 600, marginBottom: '6px' }}>{isRtl ? 'خطر عالي' : 'High Risk (5+)'}</div>
+            <div style={{ fontSize: '28px', fontWeight: 800, color: '#EF4444' }}>{flightRiskData.filter(e => e.score >= 5).length}</div>
+          </div>
+          <div style={{ padding: '16px', borderRadius: '10px', background: 'rgba(245,158,11,0.1)', border: '1px solid rgba(245,158,11,0.3)' }}>
+            <div style={{ fontSize: '12px', color: '#F59E0B', fontWeight: 600, marginBottom: '6px' }}>{isRtl ? 'خطر متوسط' : 'Medium Risk (3-4)'}</div>
+            <div style={{ fontSize: '28px', fontWeight: 800, color: '#F59E0B' }}>{flightRiskData.filter(e => e.score >= 3 && e.score < 5).length}</div>
+          </div>
+          <div style={{ padding: '16px', borderRadius: '10px', background: 'rgba(16,185,129,0.1)', border: '1px solid rgba(16,185,129,0.3)' }}>
+            <div style={{ fontSize: '12px', color: '#10B981', fontWeight: 600, marginBottom: '6px' }}>{isRtl ? 'خطر منخفض' : 'Low Risk (0-2)'}</div>
+            <div style={{ fontSize: '28px', fontWeight: 800, color: '#10B981' }}>{flightRiskData.filter(e => e.score < 3).length}</div>
+          </div>
+        </div>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '12px' }}>
+          {flightRiskData.slice(0, 10).map((emp, idx) => (
+            <div key={emp.id} style={{ padding: '14px', borderRadius: '10px', background: 'var(--bg-card)', border: '1px solid var(--border-color)', display: 'flex', alignItems: 'center', gap: '14px', cursor: 'pointer', transition: 'all 0.2s ease' }}
+              onMouseOver={e => e.currentTarget.style.borderColor = 'var(--accent-purple)'}
+              onMouseOut={e => e.currentTarget.style.borderColor = 'var(--border-color)'}>
+              <div style={{ width: '36px', height: '36px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '14px', fontWeight: 800, color: 'white', flexShrink: 0, background: emp.score >= 5 ? '#EF4444' : emp.score >= 3 ? '#F59E0B' : '#10B981' }}>#{idx + 1}</div>
+              <div style={{ flex: 1, minWidth: 0 }}>
+                <div style={{ fontSize: '14px', fontWeight: 600, color: 'var(--text-main)', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{emp.name}</div>
+                <div style={{ fontSize: '12px', color: 'var(--text-dim)' }}>{emp.dept}</div>
+              </div>
+              <div style={{ fontSize: '18px', fontWeight: 800, color: emp.score >= 5 ? '#EF4444' : emp.score >= 3 ? '#F59E0B' : '#10B981' }}>{emp.score}/7</div>
+            </div>
+          ))}
         </div>
       </div>
 
