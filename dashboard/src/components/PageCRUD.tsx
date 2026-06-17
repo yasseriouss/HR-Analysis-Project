@@ -22,7 +22,7 @@ interface PageCRUDProps<T extends { id?: string }> {
   lang: string;
 }
 
-export function PageCRUD<T extends { id?: string }>({ title, fields, state, getKey, getLabel, lang }: PageCRUDProps<T>) {
+export function PageCRUD<T extends { id?: string }>({ title, fields, state, getKey, getLabel }: PageCRUDProps<T>) {
   const { items, create, update, remove } = state;
   const [form, setForm] = useState<Partial<T>>({});
   const [editId, setEditId] = useState<string | null>(null);
