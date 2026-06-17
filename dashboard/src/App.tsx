@@ -32,6 +32,7 @@ import { PredictorTab } from './components/PredictorTab';
 import { DataEntryTab } from './components/DataEntryTab';
 import { AttendanceTab, AdvancesTab, LeavesTab, VehiclesTab, ViolationsTab, SystemUsersTab } from './components/AccessDbTabs';
 import ErrorBoundary from './components/ErrorBoundary';
+import { withPermission } from './components/withPermission';
 import { t } from './utils/i18n';
 import type { Language } from './utils/i18n';
 import { Languages } from 'lucide-react';
@@ -218,13 +219,9 @@ export const App: React.FC = () => {
 
         {/* Dynamic Active Tab Renderer */}
         <div id="active-tab-content" style={{ flex: 1, marginTop: '16px' }}>
-          {activeTab === 'overview' && <OverviewTab data={filteredData} lang={lang} />}
-          {activeTab === 'attrition' && <AttritionTab data={filteredData} lang={lang} />}
-          {activeTab === 'salary' && <SalaryTab data={filteredData} lang={lang} />}
-          {activeTab === 'satisfaction' && <SatisfactionTab data={filteredData} lang={lang} />}
-          {activeTab === 'performance' && <PerformanceTab data={filteredData} lang={lang} />}
-          {activeTab === 'payroll' && <PayrollTab data={filteredData} lang={lang} />}
-          {activeTab === 'contracts' && <ContractsTab data={filteredData} lang={lang} />}
+          {withPermission({ permission: 'view_analytics', fallback: null, children: <><OverviewTab data={filteredData} lang={lang} /><AttritionTab data={filteredData} lang={lang} /><SalaryTab data={filteredData} lang={lang} /></> })}
+          {withPermission({ permission: 'view_analytics', fallback: null, children: <><SatisfactionTab data={filteredData} lang={lang} /><PerformanceTab data={filteredData} lang={lang} /></> })}
+          {withPermission({ permission: 'manage_payroll', fallback: null, children: <><PayrollTab data={filteredData} lang={lang} /><ContractsTab data={filteredData} lang={lang} /></> })}
           {activeTab === 'gratuity' && <GratuityCalculator data={filteredData} lang={lang} />}
           {activeTab === 'shifts' && <ShiftManagement lang={lang} />}
           {activeTab === 'ess' && <ESSPortal data={filteredData} lang={lang} />}
@@ -246,12 +243,12 @@ export const App: React.FC = () => {
           {activeTab === 'dataentry' && <DataEntryTab data={employees} setData={setEmployees} lang={lang} />}
           {/* Access Database Integration Tabs */}
           <ErrorBoundary lang={lang}>
-            {activeTab === 'attendance' && <AttendanceTab lang={lang} />}
-            {activeTab === 'advances' && <AdvancesTab lang={lang} />}
-            {activeTab === 'leaves' && <LeavesTab lang={lang} />}
-            {activeTab === 'vehicles' && <VehiclesTab lang={lang} />}
-            {activeTab === 'violations' && <ViolationsTab lang={lang} />}
-            {activeTab === 'systemusers' && <SystemUsersTab lang={lang} />}
+            {withPermission({ permission: 'manage_attendance', fallback: null, children: <AttendanceTab lang={lang} /> })}
+            {withPermission({ permission: 'approve_expenses', fallback: null, children: <AdvancesTab lang={lang} /> })}
+            {withPermission({ permission: 'manage_leaves', fallback: null, children: <LeavesTab lang={lang} /> })}
+            {withPermission({ permission: 'manage_vehicles', fallback: null, children: <VehiclesTab lang={lang} /> })}
+            {withPermission({ permission: 'manage_violations', fallback: null, children: <ViolationsTab lang={lang} /> })}
+            {withPermission({ permission: 'manage_users', fallback: null, children: <SystemUsersTab lang={lang} /> })}
           </ErrorBoundary>
         </div>
       </main>
