@@ -9,11 +9,33 @@ import { AttritionTab } from './components/AttritionTab';
 import { SalaryTab } from './components/SalaryTab';
 import { SatisfactionTab } from './components/SatisfactionTab';
 import { PerformanceTab } from './components/PerformanceTab';
+import { PayrollTab } from './components/PayrollTab';
+import { ContractsTab } from './components/ContractsTab';
+import { GratuityCalculator } from './components/GratuityCalculator';
+import { ShiftManagement } from './components/ShiftManagement';
+import { ESSPortal } from './components/ESSPortal';
+import { ExpensesTab } from './components/ExpensesTab';
+import { OrgChart } from './components/OrgChart';
+import { MSSPortal } from './components/MSSPortal';
+import { LifecycleTab } from './components/LifecycleTab';
+import { ReportsTab } from './components/ReportsTab';
+import { ScorecardTab } from './components/ScorecardTab';
+import { DiversityTab } from './components/DiversityTab';
+import { WorkforceAnalytics } from './components/WorkforceAnalytics';
+import { RecruitmentTab } from './components/RecruitmentTab';
+import { PerformanceReview } from './components/PerformanceReview';
+import { TrainingTab } from './components/TrainingTab';
+import { HRToolsTab } from './components/HRToolsTab';
+import { NotificationsTab } from './components/NotificationsTab';
+import { DocumentsTab } from './components/DocumentsTab';
 import { PredictorTab } from './components/PredictorTab';
 import { DataEntryTab } from './components/DataEntryTab';
+import { AttendanceTab, AdvancesTab, LeavesTab, VehiclesTab, ViolationsTab, SystemUsersTab } from './components/AccessDbTabs';
+import ErrorBoundary from './components/ErrorBoundary';
 import { t } from './utils/i18n';
 import type { Language } from './utils/i18n';
 import { Languages } from 'lucide-react';
+import { ThemeSelector } from './components/ThemeSelector';
 
 // Cast raw JSON data to our type-safe Employee array
 const hrData = hrDataRaw as Employee[];
@@ -137,12 +159,15 @@ export const App: React.FC = () => {
                 fontSize: '28px', 
                 fontWeight: 800, 
                 color: 'var(--text-main)',
-                fontFamily: isRtl ? 'Tajawal, sans-serif' : 'Outfit, sans-serif'
+                fontFamily: isRtl ? 'var(--font-family-ar)' : 'var(--font-family)'
               }}
             >
               {t('appTitle', lang)}
             </h1>
           </div>
+
+          {/* Theme Selector - RTL aware positioning */}
+          <ThemeSelector lang={lang} />
 
           {/* Premium Language Switcher Button */}
           <button
@@ -158,7 +183,7 @@ export const App: React.FC = () => {
               padding: '10px 18px',
               borderRadius: '20px',
               cursor: 'pointer',
-              fontFamily: isRtl ? 'Tajawal, sans-serif' : 'var(--font-family)',
+              fontFamily: isRtl ? 'var(--font-family-ar)' : 'var(--font-family)',
               fontWeight: 600,
               fontSize: '14px',
               boxShadow: 'var(--shadow-main)',
@@ -198,8 +223,36 @@ export const App: React.FC = () => {
           {activeTab === 'salary' && <SalaryTab data={filteredData} lang={lang} />}
           {activeTab === 'satisfaction' && <SatisfactionTab data={filteredData} lang={lang} />}
           {activeTab === 'performance' && <PerformanceTab data={filteredData} lang={lang} />}
+          {activeTab === 'payroll' && <PayrollTab data={filteredData} lang={lang} />}
+          {activeTab === 'contracts' && <ContractsTab data={filteredData} lang={lang} />}
+          {activeTab === 'gratuity' && <GratuityCalculator data={filteredData} lang={lang} />}
+          {activeTab === 'shifts' && <ShiftManagement lang={lang} />}
+          {activeTab === 'ess' && <ESSPortal data={filteredData} lang={lang} />}
+          {activeTab === 'expenses' && <ExpensesTab data={filteredData} lang={lang} />}
+          {activeTab === 'orgchart' && <OrgChart data={filteredData} lang={lang} />}
+          {activeTab === 'mss' && <MSSPortal data={filteredData} lang={lang} />}
+          {activeTab === 'lifecycle' && <LifecycleTab data={filteredData} lang={lang} />}
+          {activeTab === 'reports' && <ReportsTab data={filteredData} lang={lang} />}
+          {activeTab === 'scorecard' && <ScorecardTab data={filteredData} lang={lang} />}
+          {activeTab === 'diversity' && <DiversityTab data={filteredData} lang={lang} />}
+          {activeTab === 'workforce' && <WorkforceAnalytics data={filteredData} lang={lang} />}
+          {activeTab === 'recruitment' && <RecruitmentTab lang={lang} />}
+          {activeTab === 'perfreview' && <PerformanceReview data={filteredData} lang={lang} />}
+          {activeTab === 'training' && <TrainingTab data={filteredData} lang={lang} />}
+          {activeTab === 'hrtools' && <HRToolsTab lang={lang} />}
+          {activeTab === 'notifications' && <NotificationsTab lang={lang} />}
+          {activeTab === 'documents' && <DocumentsTab lang={lang} />}
           {activeTab === 'predictor' && <PredictorTab data={employees} lang={lang} />}
           {activeTab === 'dataentry' && <DataEntryTab data={employees} setData={setEmployees} lang={lang} />}
+          {/* Access Database Integration Tabs */}
+          <ErrorBoundary lang={lang}>
+            {activeTab === 'attendance' && <AttendanceTab lang={lang} />}
+            {activeTab === 'advances' && <AdvancesTab lang={lang} />}
+            {activeTab === 'leaves' && <LeavesTab lang={lang} />}
+            {activeTab === 'vehicles' && <VehiclesTab lang={lang} />}
+            {activeTab === 'violations' && <ViolationsTab lang={lang} />}
+            {activeTab === 'systemusers' && <SystemUsersTab lang={lang} />}
+          </ErrorBoundary>
         </div>
       </main>
     </div>
