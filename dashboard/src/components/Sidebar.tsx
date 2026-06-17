@@ -1,14 +1,11 @@
 import React from 'react';
-import { 
-  Users, 
-  UserX, 
-  CircleDollarSign, 
-  HeartHandshake, 
-  Sparkles, 
-  BrainCircuit,
-  ChevronLeft,
-  ChevronRight,
-  Database
+import {
+  Users, UserX, CircleDollarSign, HeartHandshake, Sparkles, BrainCircuit,
+  ChevronLeft, ChevronRight, Database, Clock, HandCoins, CalendarCheck,
+  Car, ShieldAlert, UserCog, Wallet, FileText, PiggyBank, CalendarClock,
+  UserCheck, ReceiptText, GitFork, ClipboardCheck, UserPlus,
+  FileBarChart, Target, PieChartIcon, Activity,
+  Briefcase, Award, GraduationCap, Calculator, Bell, FolderOpen
 } from 'lucide-react';
 import { t } from '../utils/i18n';
 import type { Language } from '../utils/i18n';
@@ -21,24 +18,99 @@ interface SidebarProps {
   lang: Language;
 }
 
-export const Sidebar: React.FC<SidebarProps> = ({
-  activeTab,
-  setActiveTab,
-  isCollapsed,
-  setIsCollapsed,
-  lang
-}) => {
+type NavItem = { id: string; labelKey: string; icon: React.ReactNode; highlight?: boolean };
+type NavGroup = { groupLabel: string; items: NavItem[] };
+
+export const Sidebar: React.FC<SidebarProps> = ({ activeTab, setActiveTab, isCollapsed, setIsCollapsed, lang }) => {
   const isRtl = lang === 'ar';
 
-  const menuItems = [
-    { id: 'overview', labelKey: 'tabOverview' as const, icon: <Users size={20} /> },
-    { id: 'attrition', labelKey: 'tabAttrition' as const, icon: <UserX size={20} /> },
-    { id: 'salary', labelKey: 'tabSalary' as const, icon: <CircleDollarSign size={20} /> },
-    { id: 'satisfaction', labelKey: 'tabSatisfaction' as const, icon: <HeartHandshake size={20} /> },
-    { id: 'performance', labelKey: 'tabPerformance' as const, icon: <Sparkles size={20} /> },
-    { id: 'predictor', labelKey: 'tabPredictor' as const, icon: <BrainCircuit size={20} />, highlight: true },
-    { id: 'dataentry', labelKey: 'tabDataEntry' as const, icon: <Database size={20} /> },
+  const menuGroups: NavGroup[] = [
+    {
+      groupLabel: isRtl ? 'الرئيسية' : 'Main',
+      items: [
+        { id: 'overview', labelKey: 'tabOverview', icon: <Users size={20} /> },
+        { id: 'attrition', labelKey: 'tabAttrition', icon: <UserX size={20} /> },
+        { id: 'salary', labelKey: 'tabSalary', icon: <CircleDollarSign size={20} /> },
+        { id: 'satisfaction', labelKey: 'tabSatisfaction', icon: <HeartHandshake size={20} /> },
+        { id: 'performance', labelKey: 'tabPerformance', icon: <Sparkles size={20} /> },
+      ]
+    },
+    {
+      groupLabel: isRtl ? 'التقارير والاستراتيجية' : 'Reports & Strategy',
+      items: [
+        { id: 'reports', labelKey: 'tabReports', icon: <FileBarChart size={20} /> },
+        { id: 'scorecard', labelKey: 'tabScorecard', icon: <Target size={20} /> },
+        { id: 'diversity', labelKey: 'tabDiversity', icon: <PieChartIcon size={20} /> },
+        { id: 'workforce', labelKey: 'tabWorkforce', icon: <Activity size={20} /> },
+        { id: 'orgchart', labelKey: 'tabOrgChart', icon: <GitFork size={20} /> },
+      ]
+    },
+    {
+      groupLabel: isRtl ? 'التوظيف والتطوير' : 'Recruitment & Development',
+      items: [
+        { id: 'recruitment', labelKey: 'tabRecruitment', icon: <Briefcase size={20} /> },
+        { id: 'perfreview', labelKey: 'tabPerfReview', icon: <Award size={20} /> },
+        { id: 'training', labelKey: 'tabTraining', icon: <GraduationCap size={20} /> },
+        { id: 'lifecycle', labelKey: 'tabLifecycle', icon: <UserPlus size={20} /> },
+      ]
+    },
+    {
+      groupLabel: isRtl ? 'العمليات التشغيلية' : 'Operations',
+      items: [
+        { id: 'payroll', labelKey: 'tabPayroll', icon: <Wallet size={20} /> },
+        { id: 'contracts', labelKey: 'tabContracts', icon: <FileText size={20} /> },
+        { id: 'gratuity', labelKey: 'tabGratuity', icon: <PiggyBank size={20} /> },
+        { id: 'shifts', labelKey: 'tabShifts', icon: <CalendarClock size={20} /> },
+        { id: 'expenses', labelKey: 'tabExpenses', icon: <ReceiptText size={20} /> },
+      ]
+    },
+    {
+      groupLabel: isRtl ? 'البوابات' : 'Portals',
+      items: [
+        { id: 'ess', labelKey: 'tabESS', icon: <UserCheck size={20} /> },
+        { id: 'mss', labelKey: 'tabMSS', icon: <ClipboardCheck size={20} /> },
+      ]
+    },
+    {
+      groupLabel: isRtl ? 'الذكاء الاصطناعي والأدوات' : 'AI & Tools',
+      items: [
+        { id: 'predictor', labelKey: 'tabPredictor', icon: <BrainCircuit size={20} />, highlight: true },
+        { id: 'dataentry', labelKey: 'tabDataEntry', icon: <Database size={20} /> },
+        { id: 'hrtools', labelKey: 'tabHRTools', icon: <Calculator size={20} /> },
+        { id: 'notifications', labelKey: 'tabNotifications', icon: <Bell size={20} /> },
+        { id: 'documents', labelKey: 'tabDocuments', icon: <FolderOpen size={20} /> },
+      ]
+    },
+    {
+      groupLabel: isRtl ? 'النظام المتكامل' : 'Access Modules',
+      items: [
+        { id: 'attendance', labelKey: 'tabAttendance', icon: <Clock size={20} /> },
+        { id: 'advances', labelKey: 'tabAdvances', icon: <HandCoins size={20} /> },
+        { id: 'leaves', labelKey: 'tabLeaves', icon: <CalendarCheck size={20} /> },
+        { id: 'vehicles', labelKey: 'tabVehicles', icon: <Car size={20} /> },
+        { id: 'violations', labelKey: 'tabViolations', icon: <ShieldAlert size={20} /> },
+        { id: 'systemusers', labelKey: 'tabSystemUsers', icon: <UserCog size={20} /> },
+      ]
+    }
   ];
+
+  const baseBtn: React.CSSProperties = {
+    display: 'flex',
+    alignItems: 'center',
+    gap: '12px',
+    padding: '12px 14px',
+    border: 'none',
+    borderRadius: '10px',
+    cursor: 'pointer',
+    fontFamily: isRtl ? 'Tajawal, sans-serif' : 'var(--font-family)',
+    fontSize: '14px',
+    fontWeight: 500,
+    textAlign: isRtl ? 'right' : 'left',
+    width: '100%',
+    transition: 'all 0.2s ease',
+    backgroundColor: 'transparent',
+    color: 'var(--text-muted)'
+  };
 
   return (
     <aside
@@ -58,8 +130,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
         overflowX: 'hidden'
       }}
     >
-      {/* Brand Header */}
-      <div 
+      <div
         style={{
           padding: '24px 20px',
           display: 'flex',
@@ -70,7 +141,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
           whiteSpace: 'nowrap'
         }}
       >
-        <div 
+        <div
           style={{
             background: 'var(--gradient-primary)',
             padding: '8px',
@@ -85,10 +156,10 @@ export const Sidebar: React.FC<SidebarProps> = ({
           <BrainCircuit size={24} />
         </div>
         {!isCollapsed && (
-          <span 
-            style={{ 
-              fontWeight: 800, 
-              fontSize: '18px', 
+          <span
+            style={{
+              fontWeight: 800,
+              fontSize: '18px',
               fontFamily: isRtl ? 'Tajawal, sans-serif' : 'Outfit, sans-serif',
               letterSpacing: '-0.02em'
             }}
@@ -106,97 +177,96 @@ export const Sidebar: React.FC<SidebarProps> = ({
         )}
       </div>
 
-      {/* Navigation List */}
-      <nav 
+      <nav
         style={{
           padding: '20px 10px',
           display: 'flex',
           flexDirection: 'column',
           gap: '8px',
-          flex: 1
+          flex: 1,
+          overflowY: 'auto'
         }}
       >
-        {menuItems.map((item) => {
-          const isActive = activeTab === item.id;
-          const label = t(item.labelKey, lang);
-          return (
-            <button
-              key={item.id}
-              id={`nav-tab-${item.id}`}
-              onClick={() => setActiveTab(item.id)}
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                gap: '12px',
-                padding: '12px 14px',
-                border: 'none',
-                borderRadius: '10px',
-                cursor: 'pointer',
-                fontFamily: isRtl ? 'Tajawal, sans-serif' : 'var(--font-family)',
-                fontSize: '14px',
-                fontWeight: isActive ? 600 : 500,
-                textAlign: isRtl ? 'right' : 'left',
-                width: '100%',
-                transition: 'all 0.2s ease',
-                backgroundColor: isActive 
-                  ? 'hsla(263, 90%, 65%, 0.15)' 
-                  : 'transparent',
-                color: isActive 
-                  ? 'var(--text-main)' 
-                  : 'var(--text-muted)',
-                borderLeft: isRtl ? 'none' : (isActive ? '3px solid var(--accent-purple)' : '3px solid transparent'),
-                borderRight: isRtl ? (isActive ? '3px solid var(--accent-purple)' : '3px solid transparent') : 'none',
-                position: 'relative',
-                boxShadow: isActive ? 'inset 0 0 10px rgba(185, 90%, 50%, 0.05)' : 'none'
-              }}
-              className={item.highlight && !isActive ? 'glowing-element' : ''}
-              title={isCollapsed ? label : undefined}
-            >
-              <span 
-                style={{ 
-                  color: isActive 
-                    ? 'var(--accent-cyan)' 
-                    : (item.highlight ? 'var(--accent-purple)' : 'inherit'),
-                  display: 'flex',
-                  alignItems: 'center'
+        {menuGroups.map((group, gIdx) => (
+          <div key={gIdx} style={{ marginBottom: '6px' }}>
+            {!isCollapsed && (
+              <div
+                style={{
+                  padding: '6px 14px',
+                  fontSize: '11px',
+                  fontWeight: 700,
+                  textTransform: 'uppercase',
+                  letterSpacing: '0.08em',
+                  color: 'var(--text-dim)',
+                  fontFamily: isRtl ? 'Tajawal, sans-serif' : 'var(--font-family)'
                 }}
               >
-                {item.icon}
-              </span>
-              {!isCollapsed && (
-                <span style={{ whiteSpace: 'nowrap' }}>
-                  {label}
-                </span>
-              )}
-              {item.highlight && !isCollapsed && (
-                <span 
-                  style={{
-                    marginRight: isRtl ? 'auto' : '0',
-                    marginLeft: isRtl ? '0' : 'auto',
-                    backgroundColor: 'var(--accent-purple)',
-                    color: 'white',
-                    fontSize: '10px',
-                    padding: '2px 6px',
-                    borderRadius: '8px',
-                    fontWeight: 700,
-                    textTransform: 'uppercase'
-                  }}
-                >
-                  {t('tabPredictorBadge', lang)}
-                </span>
-              )}
-            </button>
-          );
-        })}
+                {group.groupLabel}
+              </div>
+            )}
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
+              {group.items.map((item) => {
+                const isActive = activeTab === item.id;
+                const label = t(item.labelKey as Parameters<typeof t>[0], lang);
+                const btnStyle: React.CSSProperties = {
+                  ...baseBtn,
+                  fontWeight: isActive ? 600 : 500,
+                  backgroundColor: isActive ? 'hsla(263, 90%, 65%, 0.15)' : 'transparent',
+                  color: isActive ? 'var(--text-main)' : 'var(--text-muted)',
+                  borderLeft: isRtl ? 'none' : (isActive ? '3px solid var(--accent-purple)' : '3px solid transparent'),
+                  borderRight: isRtl ? (isActive ? '3px solid var(--accent-purple)' : '3px solid transparent') : 'none',
+                  boxShadow: isActive ? 'inset 0 0 10px rgba(185, 90%, 50%, 0.05)' : 'none'
+                };
+                return (
+                  <button
+                    key={item.id}
+                    id={`nav-tab-${item.id}`}
+                    onClick={() => setActiveTab(item.id)}
+                    style={btnStyle}
+                    className={item.highlight && !isActive ? 'glowing-element' : ''}
+                    title={isCollapsed ? label : undefined}
+                  >
+                    <span
+                      style={{
+                        color: isActive ? 'var(--accent-cyan)' : item.highlight ? 'var(--accent-purple)' : 'inherit',
+                        display: 'flex',
+                        alignItems: 'center'
+                      }}
+                    >
+                      {item.icon}
+                    </span>
+                    {!isCollapsed && <span style={{ whiteSpace: 'nowrap' }}>{label}</span>}
+                    {item.highlight && !isCollapsed && (
+                      <span
+                        style={{
+                          marginRight: isRtl ? 'auto' : '0',
+                          marginLeft: isRtl ? '0' : 'auto',
+                          backgroundColor: 'var(--accent-purple)',
+                          color: 'white',
+                          fontSize: '10px',
+                          padding: '2px 6px',
+                          borderRadius: '8px',
+                          fontWeight: 700,
+                          textTransform: 'uppercase'
+                        }}
+                      >
+                        {t('tabPredictorBadge', lang)}
+                      </span>
+                    )}
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+        ))}
       </nav>
 
-      {/* Collapse Toggle Footer */}
-      <div 
+      <div
         style={{
           padding: '16px',
           borderTop: '1px solid var(--border-color)',
           display: 'flex',
-          justifyContent: isCollapsed ? 'center' : (isRtl ? 'flex-start' : 'flex-end')
+          justifyContent: isCollapsed ? 'center' : isRtl ? 'flex-start' : 'flex-end'
         }}
       >
         <button
@@ -215,15 +285,13 @@ export const Sidebar: React.FC<SidebarProps> = ({
             cursor: 'pointer',
             transition: 'all 0.2s ease'
           }}
-          title={isCollapsed ? (isRtl ? 'توسيع القائمة' : 'Expand Sidebar') : (isRtl ? 'طي القائمة' : 'Collapse Sidebar')}
+          title={isCollapsed ? t('sidebarExpand', lang) : t('sidebarCollapse', lang)}
         >
-          {isCollapsed 
-            ? (isRtl ? <ChevronLeft size={16} /> : <ChevronRight size={16} />) 
-            : (isRtl ? <ChevronRight size={16} /> : <ChevronLeft size={16} />)
-          }
+          {isCollapsed ? (isRtl ? <ChevronLeft size={16} /> : <ChevronRight size={16} />) : (isRtl ? <ChevronRight size={16} /> : <ChevronLeft size={16} />)}
         </button>
       </div>
     </aside>
   );
 };
+
 export default Sidebar;
