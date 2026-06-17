@@ -3,6 +3,7 @@
 :root {
   /* Fonts */
   --font-family: 'Outfit', 'Inter', sans-serif;
+  --font-family-ar: 'Tajawal', 'Inter', sans-serif;
 
   /* Harmonized Color Palette */
   --bg-main: hsl(224, 30%, 8%);
@@ -30,7 +31,7 @@
 
   /* Effects */
   --shadow-main: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
-  --shadow-glow: 0 0 15px rgba(185, 90%, 50%, 0.2);
+  --shadow-glow: 0 0 15px hsla(185, 90%, 50%, 0.2);
   --border-radius-sm: 8px;
   --border-radius-md: 16px;
   --border-radius-lg: 24px;
@@ -131,7 +132,7 @@ body {
 
 /* Typography Utilities */
 h1, h2, h3, h4 {
-  font-family: 'Outfit', sans-serif;
+  font-family: var(--font-family);
   font-weight: 600;
   letter-spacing: -0.02em;
 }
@@ -144,8 +145,17 @@ h1, h2, h3, h4 {
 
 /* Animations */
 @keyframes pulseGlow {
-  0%, 100% { box-shadow: 0 0 15px rgba(263, 90%, 65%, 0.1); }
-  50% { box-shadow: 0 0 25px rgba(185, 90%, 50%, 0.25); }
+  0%, 100% { box-shadow: 0 0 15px hsla(263, 90%, 65%, 0.1); }
+  50% { box-shadow: 0 0 25px hsla(185, 90%, 50%, 0.25); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.3s ease forwards;
 }
 
 .glowing-element {
@@ -263,7 +273,56 @@ input:checked + .toggle-slider:before {
 
 /* RTL Layout & Typography Overrides */
 [dir="rtl"] {
-  font-family: 'Tajawal', 'Inter', sans-serif;
+  font-family: var(--font-family-ar);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 1024px) {
+  .dashboard-grid {
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  }
+  .metrics-row {
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .main-content {
+    padding: 12px;
+    gap: 12px;
+  }
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  .metrics-row {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+  h1, h2, h3, h4 {
+    font-size: 0.95em;
+  }
+  table, .glass-panel-noclick, .glass-panel {
+    border-radius: var(--border-radius-sm);
+  }
+  .recharts-wrapper {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .metrics-row {
+    grid-template-columns: 1fr;
+  }
+  .dashboard-grid > div[id^="chart-"] {
+    height: 280px !important;
+  }
+  [id^="scenario-load-"] span:first-child {
+    max-width: 110px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
 }
 
 [dir="rtl"] .toggle-slider:before {
