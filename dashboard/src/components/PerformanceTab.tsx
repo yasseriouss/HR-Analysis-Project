@@ -14,7 +14,7 @@ import {
   Pie,
   Cell
 } from 'recharts';
-import { Star, GraduationCap, Trophy, Dumbbell } from 'lucide-react';
+import { Star, GraduationCap, Trophy, Dumbbell, Target } from 'lucide-react';
 import { t, translateValue } from '../utils/i18n';
 import type { Language } from '../utils/i18n';
 
@@ -140,6 +140,44 @@ export const PerformanceTab: React.FC<PerformanceTabProps> = ({ data, lang }) =>
 
   const PIE_COLORS = ['hsl(185, 90%, 50%)', 'hsl(263, 90%, 65%)'];
 
+  // 6. 9-Box Talent Matrix Data (based on screenshot 9 Box Dashboard.png)
+  type NineBoxEmp = { id: string; name: string; dept: string; performance: number; potential: number; rating: number };
+  const nineBoxData = useMemo(() => {
+    const boxes: NineBoxEmp[][] = Array.from({ length: 9 }, () => []);
+    data.forEach(e => {
+      const perf = Math.max(1, Math.min(5, Math.round(((e.PerformanceRating - 3) / 1) * 5) || 3));
+      const potential = Math.max(1, Math.min(5, Math.round((e.YearsAtCompany / 10 + Math.min(e.TrainingTimesLastYear, 5) / 5) * 5 / 2) || 3));
+      const col = Math.min(3, Math.max(1, Math.ceil(perf / (5/3))));
+      const row = Math.min(3, Math.max(1, Math.ceil(potential / (5/3))));
+      const idx = (row - 1) * 3 + (col - 1);
+      boxes[idx].push({
+        id: e.EmpID,
+        name: `#${e.EmployeeNumber}`,
+        dept: e.Department,
+        performance: perf,
+        potential: potential,
+        rating: e.PerformanceRating
+      });
+    });
+    return boxes;
+  }, [data]);
+
+  const getBoxColor = (row: number, col: number) => {
+    if (row === 3 && col === 3) return 'rgba(16, 185, 129, 0.15)'; // High/High - Green
+    if (row === 3 && col === 2) return 'rgba(245, 158, 11, 0.15)'; // High/Med - Yellow
+    if (row === 1 && col === 1) return 'rgba(239, 68, 68, 0.15)'; // Low/Low - Red
+    return 'rgba(139, 92, 246, 0.08)'; // Others - Purple tint
+  };
+
+  const getBoxLabel = (row: number, col: number) => {
+    const labels = [
+      ['#9 Low Potential', '#8 Low Potential', '#7 Medium Potential'],
+      ['#6 Low Potential', '#5 Medium Potential', '#4 High Potential'],
+      ['#3 Low Potential', '#2 Medium Potential', '#1 High Potential']
+    ];
+    return labels[row-1][col-1];
+  };
+
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
       {/* KPIs Grid */}
@@ -253,8 +291,8 @@ export const PerformanceTab: React.FC<PerformanceTabProps> = ({ data, lang }) =>
                 <YAxis stroke="var(--text-dim)" fontSize={12} tickLine={false} axisLine={false} orientation={isRtl ? 'right' : 'left'} tickFormatter={(value) => `${value}%`} />
                 <Tooltip formatter={(value, _name, props) => {
                   const total = props.payload.Total;
-                  const employeesLabel = isRtl ? 'موظف' : 'Employees';
-                  return [`${value}% (${total.toLocaleString(isRtl ? 'ar-EG' : 'en-US')} ${employeesLabel})`, t('tableHeaderRate', lang)];
+                  const employeesLabel = t('employeesUnit', lang);
+                  return [`${value}% (${total.toLocaleString(lang === 'ar' ? 'ar-EG' : 'en-US')} ${employeesLabel})`, t('tableHeaderRate', lang)];
                 }} />
                 <Bar dataKey="Attrition Rate (%)" fill="var(--accent-purple)" radius={[4, 4, 0, 0]} barSize={35} />
               </BarChart>
@@ -281,6 +319,140 @@ export const PerformanceTab: React.FC<PerformanceTabProps> = ({ data, lang }) =>
               </BarChart>
             </ResponsiveContainer>
           </div>
+        </div>
+      </div>
+
+      {/* Phase 7.1: 9-Box Talent Matrix (from screenshots/9 Box Dashboard.png) */}
+      <div className="glass-panel-noclick" style={{ padding: '24px' }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px', flexWrap: 'wrap', gap: '12px' }}>
+          <div>
+            <h3 style={{ fontSize: '18px', fontWeight: 700, color: 'var(--text-main)', margin: 0, display: 'flex', alignItems: 'center', gap: '10px' }}>
+              <Target size={20} style={{ color: 'var(--accent-cyan)' }} />
+              {isRtl ? 'مصفوفة المواهب (9 مربعات)' : '9-Box Talent Matrix'}
+            </h3>
+            <p style={{ fontSize: '12px', color: 'var(--text-dim)', margin: '4px 0 0' }}>
+              {isRtl ? 'الأداء مقابل الإمكانات' : 'Performance vs Potential'}
+            </p>
+          </div>
+          <div style={{ display: 'flex', gap: '16px', flexWrap: 'wrap' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '11px', color: 'var(--text-muted)' }}>
+              <div style={{ width: '12px', height: '12px', borderRadius: '2px', background: 'rgba(16,185,129,0.3)' }} />
+              {isRtl ? 'نجوم' : 'Stars'}
+            </div>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '11px', color: 'var(--text-muted)' }}>
+              <div style={{ width: '12px', height: '12px', borderRadius: '2px', background: 'rgba(245,158,11,0.3)' }} />
+              {isRtl ? 'أداء عالي' : 'High Perf'}
+            </div>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '11px', color: 'var(--text-muted)' }}>
+              <div style={{ width: '12px', height: '12px', borderRadius: '2px', background: 'rgba(239,68,68,0.3)' }} />
+              {isRtl ? 'ضعيف' : 'Low'}
+            </div>
+          </div>
+        </div>
+
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(3, 1fr)',
+          gap: '2px',
+          background: 'var(--border-color)',
+          borderRadius: '10px',
+          overflow: 'hidden',
+          maxWidth: '700px',
+          margin: '0 auto'
+        }}>
+          {/* Y-axis label */}
+          <div style={{
+            gridRow: '1 / 4', gridColumn: '0',
+            writingMode: 'vertical-rl', transform: 'rotate(180deg)',
+            display: 'flex', alignItems: 'center', justifyContent: 'center',
+            fontSize: '11px', color: 'var(--text-dim)', fontWeight: 600,
+            padding: '8px', background: 'var(--bg-card)'
+          }}>
+            {isRtl ? 'الإمكانات ↑' : 'Potential ↑'}
+          </div>
+
+          {Array.from({ length: 9 }, (_, i) => {
+            const row = 3 - Math.floor(i / 3); // top row = 3
+            const col = (i % 3) + 1;
+            const employees = nineBoxData[i];
+            const boxColor = getBoxColor(row, col);
+            return (
+              <div
+                key={i}
+                style={{
+                  background: boxColor,
+                  padding: '12px',
+                  minHeight: '140px',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  gap: '6px',
+                  transition: 'all 0.2s ease',
+                  cursor: 'pointer',
+                  position: 'relative'
+                }}
+                onMouseOver={e => e.currentTarget.style.background = 'rgba(139,92,246,0.15)'}
+                onMouseOut={e => e.currentTarget.style.background = boxColor}
+                title={getBoxLabel(row, col)}
+              >
+                <div style={{ fontSize: '10px', color: 'var(--text-dim)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+                  {getBoxLabel(row, col)}
+                </div>
+                <div style={{
+                  flex: 1, display: 'flex', flexWrap: 'wrap', gap: '3px', alignItems: 'center', justifyContent: 'center'
+                }}>
+                  {employees.slice(0, 6).map((emp) => (
+                    <div
+                      key={emp.id}
+                      style={{
+                        width: '18px', height: '18px', borderRadius: '50%',
+                        background: 'var(--accent-purple)',
+                        border: '2px solid var(--border-focus)',
+                        cursor: 'pointer',
+                        transition: 'transform 0.15s ease',
+                        position: 'relative'
+                      }}
+                      onMouseOver={e => {
+                        e.currentTarget.style.transform = 'scale(1.4)';
+                        e.currentTarget.style.zIndex = '10';
+                      }}
+                      onMouseOut={e => {
+                        e.currentTarget.style.transform = 'scale(1)';
+                        e.currentTarget.style.zIndex = '1';
+                      }}
+                    >
+                      <div style={{
+                        position: 'absolute', bottom: '24px', left: '50%', transform: 'translateX(-50%)',
+                        background: 'var(--bg-main)', border: '1px solid var(--border-color)',
+                        padding: '4px 8px', borderRadius: '4px', fontSize: '10px', whiteSpace: 'nowrap',
+                        color: 'var(--text-main)', pointerEvents: 'none', opacity: 0,
+                        transition: 'opacity 0.15s', zIndex: 20
+                      }}
+                      onMouseOver={e => e.currentTarget.style.opacity = '1'}
+                      onMouseOut={e => e.currentTarget.style.opacity = '0'}
+                      >
+                        {emp.name}
+                      </div>
+                    </div>
+                  ))}
+                  {employees.length > 6 && (
+                    <span style={{ fontSize: '9px', color: 'var(--text-dim)', fontWeight: 600 }}>
+                      +{employees.length - 6}
+                    </span>
+                  )}
+                </div>
+                <div style={{ fontSize: '10px', color: 'var(--text-dim)', textAlign: 'center', fontWeight: 600 }}>
+                  {employees.length} {isRtl ? 'موظف' : 'emp'}
+                </div>
+              </div>
+            );
+          })}
+        </div>
+
+        {/* X-axis label */}
+        <div style={{
+          textAlign: 'center', fontSize: '11px', color: 'var(--text-dim)', fontWeight: 600, marginTop: '8px'
+        }}>
+          {isRtl ? 'الأداء ←' : 'Performance →'}
         </div>
       </div>
     </div>
