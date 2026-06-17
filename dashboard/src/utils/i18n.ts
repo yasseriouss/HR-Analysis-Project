@@ -16,9 +16,178 @@ export const translations = {
     tabSalary: "Compensation",
     tabSatisfaction: "Wellbeing",
     tabPerformance: "Performance",
+    tabPayroll: "Payroll",
+    tabContracts: "Contracts",
+    tabGratuity: "Gratuity",
+    tabShifts: "Shift Management",
+    tabESS: "My Portal",
+    tabExpenses: "Expense Claims",
+    tabMSS: "Manager Portal",
+    tabOrgChart: "Org Chart",
+    tabLifecycle: "Employee Lifecycle",
+    tabReports: "Reports",
+    tabScorecard: "Scorecard",
+    tabDiversity: "Diversity",
+    tabWorkforce: "Workforce",
+    tabRecruitment: "Recruitment",
+    tabPerfReview: "Performance Review",
+    tabTraining: "Training",
+    tabHRTools: "HR Tools",
+    tabNotifications: "Notifications",
+    tabDocuments: "Documents",
     tabPredictor: "Attrition Predictor",
     tabPredictorBadge: "AI",
     tabDataEntry: "Data Entry",
+
+    // Access Database Tabs (Phase 2)
+    tabAttendance: "Attendance & Payroll",
+    tabAdvances: "Advances & Loans",
+    tabLeaves: "Leave Management",
+    tabVehicles: "Fleet Management",
+    tabViolations: "Traffic Violations",
+    tabSystemUsers: "System Users",
+
+    // Attendance & Payroll
+    attendanceTitle: "Monthly Attendance & Payroll",
+    attendancePeriod: "Period",
+    attendanceEmployee: "Employee",
+    attendanceDays: "Days Worked",
+    attendanceOvertime: "Overtime (hrs)",
+    attendanceDailyWage: "Daily Wage",
+    attendanceBasic: "Basic Salary",
+    attendanceAllowances: "Allowances",
+    attendanceDeductions: "Deductions",
+    attendanceNet: "Net Pay",
+    attendanceTotalSal: "Total Salary",
+    attendanceContSal: "Contract Salary",
+    attendanceFaction: "Faction Allowance",
+    attendanceProcedure: "Procedure Deduction",
+    attendanceWeeklyDed: "Weekly Deductions",
+    attendanceTakafol: "Takafol (Pension)",
+    attendanceAytam: "Aytam (Orphan Fund)",
+    attendanceInsDed: "Insurance Deduction",
+    attendanceHealthIns: "Health Insurance",
+    attendanceColAllow: "Cost of Living Allowance",
+    attendanceMonthly: "Monthly",
+    attendanceAnnual: "Annual",
+    attendanceSummary: "Payroll Summary",
+    attendanceTotalNet: "Total Net Payroll",
+    attendanceTotalAllowances: "Total Allowances",
+    attendanceTotalDeductions: "Total Deductions",
+    attendancePrint: "Print Salary Sheet",
+    attendanceExport: "Export to CSV",
+
+    // Advances & Loans
+    advTitle: "Financial Advances & Installments",
+    advEmployee: "Employee",
+    advPrice: "Price",
+    advTotalPrice: "Total Price",
+    advDownPayment: "Down Payment",
+    advNetPrice: "Net Price",
+    advInstallmentValue: "Installment Value",
+    advFirstPayment: "First Payment Date",
+    advInstallmentCount: "Number of Installments",
+    advRemaining: "Remaining Balance",
+    advAddAdvance: "New Advance",
+    advInstallments: "Installments",
+    advPaymentDate: "Payment Date",
+    advAmount: "Amount",
+    advStatus: "Status",
+    advPaid: "Paid",
+    advPending: "Pending",
+    advPaidAmount: "Total Paid",
+    advPendingAmount: "Total Pending",
+    advRecoveryRate: "Recovery Rate",
+
+    // Leave Management
+    leaveTitle: "Leave Management",
+    leaveEmployee: "Employee",
+    leaveType: "Leave Type",
+    leaveStart: "Start Date",
+    leaveDays: "Days",
+    leaveBalance: "Remaining Balance",
+    leaveAdd: "New Leave Request",
+    leaveAnnual: "Annual Leave",
+    leaveSick: "Sick Leave",
+    leaveEmergency: "Emergency Leave",
+    leaveMaternity: "Maternity/Parental Leave",
+    leaveHajj: "Hajj Leave",
+
+    // Fleet Management
+    fleetTitle: "Vehicle Fleet Management",
+    fleetPlate: "Plate Number",
+    fleetType: "Vehicle Type",
+    fleetClass: "Class",
+    fleetModel: "Model",
+    fleetColor: "Color",
+    fleetEngine: "Engine No.",
+    fleetChassis: "Chassis No.",
+    fleetOwner: "Owner",
+    fleetLicense: "License Expiry",
+    fleetInsurance: "Insurance Expiry",
+    fleetInsuranceCompany: "Insurance Company",
+    fleetInsAmount: "Insurance Amount",
+    fleetPrice: "Price",
+    fleetAdd: "Add Vehicle",
+    fleetExpiryAlerts: "Expiry Alerts",
+    fleetLicenseExpiring: "License expiring soon",
+    fleetInsuranceExpiring: "Insurance expiring soon",
+
+    // Traffic Violations
+    violTitle: "Traffic Violations",
+    violCustomer: "Customer Name",
+    violPlate: "Plate Number",
+    violFine: "Fine Amount",
+    violDate: "Date",
+    violTime: "Time",
+    violPlace: "Location",
+    violStatus: "Payment Status",
+    violPaid: "Paid",
+    violUnpaid: "Unpaid",
+    violAdd: "Add Violation",
+    violTotalFines: "Total Fines",
+    violTotalPaid: "Total Paid",
+    violTotalUnpaid: "Total Unpaid",
+
+    // System Users
+    usersTitle: "System Users",
+    usersUsername: "Username",
+    usersFullName: "Full Name",
+    usersPassword: "Password",
+    usersRole: "Role",
+    usersAdd: "Add User",
+    usersModuleA: "Module A Access",
+    usersModuleB: "Module B Access",
+    usersModuleC: "Module C Access",
+    usersCanAdd: "Can Add",
+    usersCanDelete: "Can Delete",
+    usersCanEdit: "Can Edit",
+
+    // Common
+    commonRefresh: "Refresh",
+    commonExport: "Export",
+    commonSave: "Save",
+    commonNoData: "No data available",
+    commonSearch: "Search...",
+    commonAdd: "Add",
+    commonEdit: "Edit",
+    commonDelete: "Delete",
+    commonStatus: "Status",
+    commonActive: "Active",
+    commonInactive: "Inactive",
+
+    // Dashboard integration
+    dbStatusEmployees: "Active Employees",
+    dbStatusAdvances: "Active Advances",
+    dbStatusInstallments: "Pending Installments",
+    dbStatusViolations: "Unpaid Violations",
+    dbStatusExpiring: "Expiring Licenses/Insurance",
+    dbOperationalKPIs: "Operational KPIs",
+    dbQuickActions: "Quick Actions",
+    dbRunPayroll: "Run Monthly Payroll",
+    dbCheckAdvances: "Review Advances",
+    dbCheckExpiry: "Check Vehicle Expiry",
+    dbRefreshData: "Refresh All Data",
 
     // Data Entry Form
     formSectGeneral: "General & Demographics",
@@ -184,6 +353,7 @@ export const translations = {
     predOvertimeLabel: "Works Overtime?",
     predClassification: "Classification",
     predLinearScore: "Linear Score (z)",
+    predConfidenceBand: "Confidence Band",
     predDiagnosticTitle: "Retention Diagnostic Report",
     predRiskDrivers: "Risk Drivers (Boosters)",
     predStabilizingFactors: "Stabilizing Factors (Mitigators)",
@@ -204,6 +374,63 @@ export const translations = {
     satMed: "Medium (2)",
     satHigh: "High (3)",
     satVeryHigh: "Very High (4)",
+
+    // Common Units & Labels
+    unitYears: "Yrs",
+    unitYear: "year",
+    unitKm: "km",
+    unitDaysMax: "days max",
+    unitThousandsK: "k",
+    unitThousandEgp: "ألف $",
+
+    // Risk Levels
+    riskLow: "Low Risk",
+    riskModerate: "Moderate Risk",
+    riskHigh: "High Risk",
+
+    // Predictor Extra
+    predAttritionRisk: "Attrition Risk",
+
+    // Error Boundary
+    errorTitle: "Something went wrong",
+    errorSubtitle: "Please refresh the page or try again",
+
+    // Sidebar
+    sidebarExpand: "Expand Sidebar",
+    sidebarCollapse: "Collapse Sidebar",
+
+    // Advances extra
+    advFinancialAdvances: "Financial Advances",
+
+    // Leaves extra
+    leaveDaysMax: "days max",
+
+    // Attendance extra
+    attendanceEmployees: "employees",
+    attendanceNetPayroll: "Net Payroll",
+    attendanceNoDataPeriod: "No data for the selected period",
+
+    // Data Entry
+    dataEntryDirectory: "Employee Directory",
+    dataEntryNoResults: "No matching employee records found",
+    dataEntryResetForm: "Reset Form",
+    dataEntryStockNone: "No Stock Options (0)",
+    dataEntryStockBasic: "Basic (Level 1)",
+    dataEntryStockHigher: "Higher (Level 2)",
+    dataEntryStockExecutive: "Executive (Level 3)",
+    dataEntryPerfExcellent: "Excellent (3)",
+    dataEntryPerfOutstanding: "Outstanding (4)",
+
+    // Salary Tab
+    salaryDefaultIncome: "$0",
+    salaryDefaultTenure: "0 Yrs",
+    salaryDefaultIncomeAr: "0 $",
+    salaryDefaultTenureAr: "0 سنوات",
+    salaryTickFormatterK: "k",
+    salaryTickFormatterKAr: "ألف $",
+
+    // Performance / Satisfaction tooltip
+    perfEmployeesLabel: "Employees",
 
     // WorkLife levels
     wlPoor: "Poor (1)",
@@ -226,9 +453,178 @@ export const translations = {
     tabSalary: "التعويضات",
     tabSatisfaction: "الرضا والرفاهية",
     tabPerformance: "الأداء والنمو",
+    tabPayroll: "الرواتب",
+    tabContracts: "العقود",
+    tabGratuity: "مكافأة نهاية الخدمة",
+    tabShifts: "إدارة النوبات",
+    tabESS: "بوابتي",
+    tabExpenses: "المطالبات المالية",
+    tabMSS: "بوابة المدير",
+    tabOrgChart: "الهيكل التنظيمي",
+    tabLifecycle: "دورة الموظف",
+    tabReports: "التقارير",
+    tabScorecard: "بطاقة الأداء",
+    tabDiversity: "التنوع والشمول",
+    tabWorkforce: "تحليل القوى العاملة",
+    tabRecruitment: "التوظيف",
+    tabPerfReview: "تقييم الأداء",
+    tabTraining: "التدريب",
+    tabHRTools: "أدوات الموارد البشرية",
+    tabNotifications: "الإشعارات",
+    tabDocuments: "المستندات",
     tabPredictor: "متنبئ التسرب",
     tabPredictorBadge: "ذكاء اصطناعي",
     tabDataEntry: "إدخال البيانات",
+
+    // Access Database Tabs (Phase 2)
+    tabAttendance: "الحضور والرواتب",
+    tabAdvances: "السلف والقروض",
+    tabLeaves: "إدارة الإجازات",
+    tabVehicles: "إدارة الأسطول",
+    tabViolations: "المخالفات المرورية",
+    tabSystemUsers: "المستخدمين",
+
+    // Attendance & Payroll
+    attendanceTitle: "الحضور والرواتب الشهرية",
+    attendancePeriod: "الفترة",
+    attendanceEmployee: "الموظف",
+    attendanceDays: "أيام العمل",
+    attendanceOvertime: "ساعات إضافية",
+    attendanceDailyWage: "الأجر اليومي",
+    attendanceBasic: "الراتب الأساسي",
+    attendanceAllowances: "البدلات",
+    attendanceDeductions: "الخصومات",
+    attendanceNet: "صافي الراتب",
+    attendanceTotalSal: "إجمالي الراتب",
+    attendanceContSal: "راتب العقد",
+    attendanceFaction: "بدل الفريق",
+    attendanceProcedure: "خصم الإجراءات",
+    attendanceWeeklyDed: "الاقتطاعات الأسبوعية",
+    attendanceTakafol: "التكافل",
+    attendanceAytam: "الأيتام",
+    attendanceInsDed: "خصم الضمان",
+    attendanceHealthIns: "التأمين الصحي",
+    attendanceColAllow: "بدل غلاء معيشة",
+    attendanceMonthly: "شهري",
+    attendanceAnnual: "سنوي",
+    attendanceSummary: "ملخص الرواتب",
+    attendanceTotalNet: "إجمالي صافي الرواتب",
+    attendanceTotalAllowances: "إجمالي البدلات",
+    attendanceTotalDeductions: "إجمالي الخصومات",
+    attendancePrint: "طباعة كشف الرواتب",
+    attendanceExport: "تصدير CSV",
+
+    // Advances & Loans
+    advTitle: "السلف المالية والاقساط",
+    advEmployee: "الموظف",
+    advPrice: "السعر",
+    advTotalPrice: "السعر الإجمالي",
+    advDownPayment: "الدفعة الأولى",
+    advNetPrice: "السعر النهائي",
+    advInstallmentValue: "قيمة القسط",
+    advFirstPayment: "تاريخ أول قسط",
+    advInstallmentCount: "عدد الأقساط",
+    advRemaining: "الرصيد المتبقي",
+    advAddAdvance: "سلفة جديدة",
+    advInstallments: "الأقساط",
+    advPaymentDate: "تاريخ الدفع",
+    advAmount: "المبلغ",
+    advStatus: "الحالة",
+    advPaid: "مدفوع",
+    advPending: "معلق",
+    advPaidAmount: "إجمالي المدفوع",
+    advPendingAmount: "إجمالي المعلق",
+    advRecoveryRate: "نسبة التحصيل",
+
+    // Leave Management
+    leaveTitle: "إدارة الإجازات",
+    leaveEmployee: "الموظف",
+    leaveType: "نوع الإجازة",
+    leaveStart: "تاريخ البداية",
+    leaveDays: "الأيام",
+    leaveBalance: "الرصيد المتبقي",
+    leaveAdd: "إجازة جديدة",
+    leaveAnnual: "إجازة سنوية",
+    leaveSick: "إجازة مرضية",
+    leaveEmergency: "إجازة اضطرارية",
+    leaveMaternity: "إجازة والدية",
+    leaveHajj: "إجازة حج",
+
+    // Fleet Management
+    fleetTitle: "إدارة أسطول المركبات",
+    fleetPlate: "رقم اللوحة",
+    fleetType: "نوع المركبة",
+    fleetClass: "الصنف",
+    fleetModel: "الموديل",
+    fleetColor: "اللون",
+    fleetEngine: "رقم المحرك",
+    fleetChassis: "رقم الشاصي",
+    fleetOwner: "المالك",
+    fleetLicense: "انتهاء الترخيص",
+    fleetInsurance: "انتهاء التأمين",
+    fleetInsuranceCompany: "شركة التأمين",
+    fleetInsAmount: "مبلغ التأمين",
+    fleetPrice: "السعر",
+    fleetAdd: "إضافة مركبة",
+    fleetExpiryAlerts: "تنبيهات الانتهاء",
+    fleetLicenseExpiring: "الترخيص على وشك الانتهاء",
+    fleetInsuranceExpiring: "التأمين على وشك الانتهاء",
+
+    // Traffic Violations
+    violTitle: "المخالفات المرورية",
+    violCustomer: "اسم العميل",
+    violPlate: "رقم اللوحة",
+    violFine: "قيمة المخالفة",
+    violDate: "التاريخ",
+    violTime: "الوقت",
+    violPlace: "المكان",
+    violStatus: "حالة الدفع",
+    violPaid: "مدفوع",
+    violUnpaid: "غير مدفوع",
+    violAdd: "إضافة مخالفة",
+    violTotalFines: "إجمالي المخالفات",
+    violTotalPaid: "إجمالي المدفوع",
+    violTotalUnpaid: "إجمالي غير المدفوع",
+
+    // System Users
+    usersTitle: "المستخدمين",
+    usersUsername: "اسم المستخدم",
+    usersFullName: "الاسم الكامل",
+    usersPassword: "كلمة السر",
+    usersRole: "الصلاحية",
+    usersAdd: "إضافة مستخدم",
+    usersModuleA: "صلاحية الوحدة A",
+    usersModuleB: "صلاحية الوحدة B",
+    usersModuleC: "صلاحية الوحدة C",
+    usersCanAdd: "يمكنه الإضافة",
+    usersCanDelete: "يمكنه الحذف",
+    usersCanEdit: "يمكنه التعديل",
+
+    // Common
+    commonRefresh: "تحديث",
+    commonExport: "تصدير",
+    commonSave: "حفظ",
+    commonNoData: "لا توجد بيانات",
+    commonSearch: "بحث...",
+    commonAdd: "إضافة",
+    commonEdit: "تعديل",
+    commonDelete: "حذف",
+    commonStatus: "الحالة",
+    commonActive: "نشط",
+    commonInactive: "غير نشط",
+
+    // Dashboard integration
+    dbStatusEmployees: "الموظفون النشطون",
+    dbStatusAdvances: "السلف النشطة",
+    dbStatusInstallments: "الأقساط المعلقة",
+    dbStatusViolations: "المخالفات غير المدفوعة",
+    dbStatusExpiring: "انتهاء الترخيص/التأمين",
+    dbOperationalKPIs: "مؤشرات الأداء التشغيلية",
+    dbQuickActions: "إجراءات سريعة",
+    dbRunPayroll: "تشغيل كشف الرواتب",
+    dbCheckAdvances: "مراجعة السلف",
+    dbCheckExpiry: "فحص تواريخ انتهاء المركبات",
+    dbRefreshData: "تحديث جميع البيانات",
 
     // Data Entry Form
     formSectGeneral: "العامة والديموغرافية",
@@ -394,6 +790,7 @@ export const translations = {
     predOvertimeLabel: "يعمل وقتاً إضافياً؟",
     predClassification: "التصنيف",
     predLinearScore: "الدرجة الخطية (z)",
+    predConfidenceBand: "نطاق الثقة",
     predDiagnosticTitle: "تقرير تشخيص الاحتفاظ بالموظف",
     predRiskDrivers: "عوامل الخطورة (مسببات المغادرة)",
     predStabilizingFactors: "العوامل الإيجابية (مثبتات البقاء)",
@@ -415,6 +812,63 @@ export const translations = {
     satHigh: "مرتفع (3)",
     satVeryHigh: "مرتفع جداً (4)",
 
+    // Common Units & Labels
+    unitYears: "سنوات",
+    unitYear: "سنة",
+    unitKm: "كم",
+    unitDaysMax: "يوم",
+    unitThousandsK: "ألف",
+    unitThousandEgp: "ألف $",
+
+    // Risk Levels
+    riskLow: "مخاطر منخفضة",
+    riskModerate: "مخاطر متوسطة",
+    riskHigh: "مخاطر عالية",
+
+    // Predictor Extra
+    predAttritionRisk: "مخاطر التسرب",
+
+    // Error Boundary
+    errorTitle: "حدث خطأ غير متوقع",
+    errorSubtitle: "يرجى تحديث الصفحة أو المحاولة مرة أخرى",
+
+    // Sidebar
+    sidebarExpand: "توسيع القائمة",
+    sidebarCollapse: "طي القائمة",
+
+    // Advances extra
+    advFinancialAdvances: "السلف المالية",
+
+    // Leaves extra
+    leaveDaysMax: "يوم",
+
+    // Attendance extra
+    attendanceEmployees: "موظف",
+    attendanceNetPayroll: "صافي الرواتب",
+    attendanceNoDataPeriod: "لا توجد بيانات للفترة المحددة",
+
+    // Data Entry
+    dataEntryDirectory: "دليل الموظفين",
+    dataEntryNoResults: "لا يوجد نتائج تطابق البحث",
+    dataEntryResetForm: "إعادة تعيين",
+    dataEntryStockNone: "لا يوجد أسهم (0)",
+    dataEntryStockBasic: "أساسي (مستوى 1)",
+    dataEntryStockHigher: "متوسط (مستوى 2)",
+    dataEntryStockExecutive: "تنفيذي (مستوى 3)",
+    dataEntryPerfExcellent: "ممتاز (3)",
+    dataEntryPerfOutstanding: "متميز (4)",
+
+    // Salary Tab
+    salaryDefaultIncome: "$0",
+    salaryDefaultTenure: "0 سنوات",
+    salaryDefaultIncomeAr: "0 $",
+    salaryDefaultTenureAr: "0 سنوات",
+    salaryTickFormatterK: "ألف",
+    salaryTickFormatterKAr: "ألف $",
+
+    // Performance / Satisfaction tooltip
+    perfEmployeesLabel: "موظف",
+
     // WorkLife levels
     wlPoor: "ضعيف (1)",
     wlFair: "مقبول (2)",
@@ -422,6 +876,9 @@ export const translations = {
     wlEx: "ممتاز (4)"
   }
 };
+
+// Locale helper for number formatting
+export const getLocale = (lang: Language): string => lang === 'ar' ? 'ar-EG' : 'en-US';
 
 // Raw value mappings for English data attributes to Arabic translations
 export const dataTranslations: { [key: string]: string } = {
@@ -516,6 +973,14 @@ export const translateValue = (value: string | number, lang: Language): string =
   if (lang === 'en') return String(value);
   const valStr = String(value);
   return dataTranslations[valStr] || valStr;
+};
+
+// Currency formatting helper
+export const formatCurrency = (value: number, lang: Language): string => {
+  if (lang === 'ar') {
+    return `${value.toLocaleString('ar-EG')} ج.م`;
+  }
+  return `$${value.toLocaleString()}`;
 };
 
 // Diagnostic translation helpers for Predictor ML Tab

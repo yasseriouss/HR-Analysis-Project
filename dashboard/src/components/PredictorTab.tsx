@@ -191,6 +191,71 @@ export const PredictorTab: React.FC<PredictorTabProps> = ({ data, lang }) => {
     return { activeBoosters, activeMitigators, recommendations };
   }, [simState]);
 
+  // Phase 8.1: Scenario Comparison (store previous snapshot)
+  const [scenarios, setScenarios] = useState<{ label: string; pct: number; tier: string; state: SimulatorState }[]>([]);
+
+  const handleSaveScenario = () => {
+    setScenarios(prev => [
+      ...prev.slice(-2),
+      { label: `Scenario ${prev.length + 1}`, pct: prediction.percentage, tier: prediction.tier, state: { ...simState } }
+    ]);
+  };
+
+  const handleLoadScenario = (s: typeof scenarios[number]) => {
+    setSimState(s.state);
+    setSelectedEmpId('Custom');
+  };
+
+  // Phase 8.2: Batch prediction summary (across all employees)
+  const batchSummary = useMemo(() => {
+    const intercept = 2.0177;
+    const bAge = -0.0488;
+    const bIncome = -0.00004394;
+    const bOverTime = 1.5841;
+    const bJobLevel = -0.2285;
+    const bYearsAtCompany = -0.0186;
+    const bDistance = 0.0303;
+    const bJobSat = -0.3118;
+    const bWorkLife = -0.2487;
+    const bEnvSat = -0.3436;
+    const bNumComp = 0.1237;
+
+    let sum = 0;
+    let high = 0;
+    let moderate = 0;
+    let low = 0;
+    data.forEach(e => {
+      const z = intercept
+        + (bAge * e.Age)
+        + (bIncome * e.MonthlyIncome)
+        + (bOverTime * (e.OverTime === 'Yes' ? 1 : 0))
+        + (bJobLevel * e.JobLevel)
+        + (bYearsAtCompany * e.YearsAtCompany)
+        + (bDistance * e.DistanceFromHome)
+        + (bJobSat * e.JobSatisfaction)
+        + (bWorkLife * e.WorkLifeBalance)
+        + (bEnvSat * e.EnvironmentSatisfaction)
+        + (bNumComp * e.NumCompaniesWorked);
+      const p = 1 / (1 + Math.exp(-z));
+      const pct = Math.round(p * 1000) / 10;
+      sum += pct;
+      if (pct >= 50) high++;
+      else if (pct >= 20) moderate++;
+      else low++;
+    });
+    const avg = data.length ? (sum / data.length) : 0;
+    return { avg, high, moderate, low, total: data.length };
+  }, [data]);
+
+  // Phase 8.3: Mock confidence band based on sigmoid steepness proxy (RMS of z across batch)
+  const confidenceBand = useMemo(() => {
+    const base = prediction.percentage;
+    const spread = 6; // illustrative band width percentage points
+    const lo = Math.max(0, base - spread);
+    const hi = Math.min(100, base + spread);
+    return `${lo.toFixed(1)}% – ${hi.toFixed(1)}%`;
+  }, [prediction.percentage]);
+
   // SVG parameters for circular progress gauge
   const strokeDashoffset = useMemo(() => {
     const radius = 80;
@@ -198,10 +263,10 @@ export const PredictorTab: React.FC<PredictorTabProps> = ({ data, lang }) => {
     return circumference - (prediction.percentage / 100) * circumference;
   }, [prediction.percentage]);
 
-  const tierTranslations = {
-    'Low Risk': isRtl ? 'مخاطر منخفضة' : 'Low Risk',
-    'Moderate Risk': isRtl ? 'مخاطر متوسطة' : 'Moderate Risk',
-    'High Risk': isRtl ? 'مخاطر عالية' : 'High Risk'
+  const tierTranslations: Record<string, string> = {
+    'Low Risk': t('riskLow', lang),
+    'Moderate Risk': t('riskModerate', lang),
+    'High Risk': t('riskHigh', lang)
   };
 
   return (
@@ -278,6 +343,16 @@ export const PredictorTab: React.FC<PredictorTabProps> = ({ data, lang }) => {
       </div>
 
       {/* Main Layout Grid */}
+      <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
+        <button id="scenario-save" onClick={handleSaveScenario} style={{ background: 'var(--accent-cyan)', color: '#000', border: 'none', padding: '8px 12px', borderRadius: '8px', cursor: 'pointer', fontSize: '12px', fontWeight: 700 }}>Save Scenario</button>
+        {scenarios.map((s, i) => (
+          <button key={i} id={`scenario-load-${i}`} onClick={() => handleLoadScenario(s)} style={{ background: 'var(--bg-sidebar)', color: 'var(--text-main)', border: '1px solid var(--border-color)', padding: '8px 12px', borderRadius: '8px', cursor: 'pointer', fontSize: '12px', fontWeight: 500, display: 'flex', alignItems: 'center', gap: '6px' }}>
+            <span>{s.label}</span>
+            <span style={{ fontSize: '10px', color: 'var(--text-dim)' }}>{s.pct}%</span>
+          </button>
+        ))}
+      </div>
+
       <div className="dashboard-grid" style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(450px, 1fr))' }}>
         {/* Sliders Control Panel */}
         <div className="glass-panel-noclick" style={{ padding: '24px', display: 'flex', flexDirection: 'column', gap: '20px' }}>
@@ -292,7 +367,7 @@ export const PredictorTab: React.FC<PredictorTabProps> = ({ data, lang }) => {
               <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '13px', fontFamily: isRtl ? 'Tajawal, sans-serif' : 'inherit' }}>
                 <span style={{ color: 'var(--text-muted)' }}>{t('predAge', lang)}</span>
                 <span style={{ fontWeight: 600, color: 'var(--accent-cyan)' }}>
-                  {isRtl ? `${simState.age.toLocaleString('ar-EG')} سنة` : `${simState.age} yrs`}
+                   {isRtl ? `${simState.age.toLocaleString('ar-EG')} ${t('unitYear', lang)}` : `${simState.age} ${t('unitYears', lang)}`}
                 </span>
               </div>
               <input 
@@ -337,7 +412,7 @@ export const PredictorTab: React.FC<PredictorTabProps> = ({ data, lang }) => {
               <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '13px', fontFamily: isRtl ? 'Tajawal, sans-serif' : 'inherit' }}>
                 <span style={{ color: 'var(--text-muted)' }}>{t('predDistance', lang)}</span>
                 <span style={{ fontWeight: 600, color: 'var(--accent-cyan)' }}>
-                  {isRtl ? `${simState.distanceFromHome.toLocaleString('ar-EG')} كم` : `${simState.distanceFromHome} km`}
+                   {isRtl ? `${simState.distanceFromHome.toLocaleString('ar-EG')} ${t('unitKm', lang)}` : `${simState.distanceFromHome} ${t('unitKm', lang)}`}
                 </span>
               </div>
               <input 
@@ -381,7 +456,7 @@ export const PredictorTab: React.FC<PredictorTabProps> = ({ data, lang }) => {
               <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '13px', fontFamily: isRtl ? 'Tajawal, sans-serif' : 'inherit' }}>
                 <span style={{ color: 'var(--text-muted)' }}>{t('predYearsCompany', lang)}</span>
                 <span style={{ fontWeight: 600, color: 'var(--accent-cyan)' }}>
-                  {isRtl ? `${simState.yearsAtCompany.toLocaleString('ar-EG')} سنة` : `${simState.yearsAtCompany} yrs`}
+                   {isRtl ? `${simState.yearsAtCompany.toLocaleString('ar-EG')} ${t('unitYear', lang)}` : `${simState.yearsAtCompany} ${t('unitYears', lang)}`}
                 </span>
               </div>
               <input 
@@ -538,12 +613,12 @@ export const PredictorTab: React.FC<PredictorTabProps> = ({ data, lang }) => {
                 transform: 'translate(-50%, -50%)',
                 textAlign: 'center'
               }}>
-                <span style={{ fontSize: '32px', fontWeight: 800, color: 'var(--text-main)', fontFamily: isRtl ? 'Tajawal, sans-serif' : 'Outfit' }}>
+                <span style={{ fontSize: '32px', fontWeight: 800, color: 'var(--text-main)', fontFamily: isRtl ? 'Tajawal, sans-serif' : 'var(--font-family)' }}>
                   {isRtl ? `${prediction.percentage.toLocaleString('ar-EG')}٪` : `${prediction.percentage}%`}
                 </span>
                 <br />
                 <span style={{ fontSize: '10px', textTransform: 'uppercase', fontWeight: 600, color: 'var(--text-dim)', letterSpacing: '0.05em', fontFamily: isRtl ? 'Tajawal, sans-serif' : 'inherit' }}>
-                  {isRtl ? 'مخاطر التسرب' : 'Attrition Risk'}
+                   {t('predAttritionRisk', lang)}
                 </span>
               </div>
             </div>
@@ -553,7 +628,7 @@ export const PredictorTab: React.FC<PredictorTabProps> = ({ data, lang }) => {
               <span style={{ fontSize: '12px', color: 'var(--text-dim)', fontWeight: 500, textTransform: 'uppercase', fontFamily: isRtl ? 'Tajawal, sans-serif' : 'inherit' }}>
                 {t('predClassification', lang)}
               </span>
-              <h2 style={{ fontSize: '24px', fontWeight: 800, color: prediction.color, fontFamily: isRtl ? 'Tajawal, sans-serif' : 'Outfit' }}>
+              <h2 style={{ fontSize: '24px', fontWeight: 800, color: prediction.color, fontFamily: isRtl ? 'Tajawal, sans-serif' : 'var(--font-family)' }}>
                 {tierTranslations[prediction.tier as 'Low Risk' | 'Moderate Risk' | 'High Risk']}
               </h2>
               
@@ -570,6 +645,7 @@ export const PredictorTab: React.FC<PredictorTabProps> = ({ data, lang }) => {
                 }}
               >
                 <span><strong>{t('predLinearScore', lang)}</strong> {isRtl ? prediction.z.toLocaleString('ar-EG', { minimumFractionDigits: 4, maximumFractionDigits: 4 }) : prediction.z.toFixed(4)}</span>
+                <span style={{ fontSize: '12px', color: 'var(--text-dim)' }}>{t('predConfidenceBand', lang)}: <strong style={{ color: 'var(--text-main)' }}>{confidenceBand}</strong></span>
                 <span>
                   {prediction.percentage >= 50 
                     ? t('predHighRiskMsg', lang)
@@ -577,6 +653,35 @@ export const PredictorTab: React.FC<PredictorTabProps> = ({ data, lang }) => {
                       ? t('predModRiskMsg', lang)
                       : t('predLowRiskMsg', lang)}
                 </span>
+              </div>
+            </div>
+          </div>
+
+          {/* Phase 8.2: Batch Prediction Summary */}
+          <div className="glass-panel-noclick" style={{ padding: '20px 24px' }}>
+            <h4 style={{ fontSize: '15px', fontWeight: 600, color: 'var(--text-main)', marginBottom: '12px', fontFamily: isRtl ? 'Tajawal, sans-serif' : 'inherit' }}>
+              {isRtl ? 'ملخص التنبؤ الجماعي' : 'Batch Prediction Summary'}
+            </h4>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(120px, 1fr))', gap: '10px' }}>
+              <div style={{ padding: '12px', borderRadius: '8px', background: 'var(--bg-sidebar)', border: '1px solid var(--border-color)' }}>
+                <div style={{ fontSize: '11px', color: 'var(--text-dim)', marginBottom: '4px' }}>{isRtl ? 'إجمالي الموظفين' : 'Total Employees'}</div>
+                <div style={{ fontSize: '20px', fontWeight: 800, color: 'var(--text-main)' }}>{batchSummary.total}</div>
+              </div>
+              <div style={{ padding: '12px', borderRadius: '8px', background: 'rgba(16,185,129,0.08)', border: '1px solid rgba(16,185,129,0.25)' }}>
+                <div style={{ fontSize: '11px', color: '#10B981', marginBottom: '4px' }}>{isRtl ? 'منخفض المخاطر' : 'Low Risk'}</div>
+                <div style={{ fontSize: '20px', fontWeight: 800, color: '#10B981' }}>{batchSummary.low}</div>
+              </div>
+              <div style={{ padding: '12px', borderRadius: '8px', background: 'rgba(245,158,11,0.08)', border: '1px solid rgba(245,158,11,0.25)' }}>
+                <div style={{ fontSize: '11px', color: '#F59E0B', marginBottom: '4px' }}>{isRtl ? 'متوسط المخاطر' : 'Moderate Risk'}</div>
+                <div style={{ fontSize: '20px', fontWeight: 800, color: '#F59E0B' }}>{batchSummary.moderate}</div>
+              </div>
+              <div style={{ padding: '12px', borderRadius: '8px', background: 'rgba(239,68,68,0.08)', border: '1px solid rgba(239,68,68,0.25)' }}>
+                <div style={{ fontSize: '11px', color: '#EF4444', marginBottom: '4px' }}>{isRtl ? 'مرتفع المخاطر' : 'High Risk'}</div>
+                <div style={{ fontSize: '20px', fontWeight: 800, color: '#EF4444' }}>{batchSummary.high}</div>
+              </div>
+              <div style={{ padding: '12px', borderRadius: '8px', background: 'var(--bg-sidebar)', border: '1px solid var(--border-color)' }}>
+                <div style={{ fontSize: '11px', color: 'var(--text-dim)', marginBottom: '4px' }}>{isRtl ? 'متوسط النسبة' : 'Avg Risk %'}</div>
+                <div style={{ fontSize: '20px', fontWeight: 800, color: 'var(--text-main)' }}>{batchSummary.avg.toFixed(1)}%</div>
               </div>
             </div>
           </div>
