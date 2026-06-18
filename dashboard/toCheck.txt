@@ -1,0 +1,239 @@
+================================================================================
+HR PULSE DASHBOARD - FINAL IMPLEMENTATION PLAN
+================================================================================
+Last Updated: 2026-06-17
+Status: ALL 5 PHASES COMPLETE ✅
+================================================================================
+
+SUMMARY
+================================================================================
+Total Tabs: 32 (bilingual AR/EN)
+Total Components: 40+
+Total Type Files: 6
+Total Utility Files: 3
+
+Full Sidebar Navigation:
+  Overview → Attrition → Compensation → Wellbeing → Performance
+  → Reports → Scorecard → Diversity → Workforce
+  → Recruitment → Performance Review → Training
+  → HR Tools → Notifications → Documents
+  → Payroll → Contracts → Gratuity → Shift Management
+  → My Portal (ESS) → Manager Portal (MSS) → Expenses → Org Chart → Lifecycle
+  → AI Predictor → Data Entry
+  → Attendance → Advances → Leaves → Fleet → Violations → System Users
+
+================================================================================
+PHASE 0: FOUNDATION ✅ DONE
+================================================================================
+- i18n (Arabic/English bilingual)
+- RTL/LTR layout switching
+- Dark theme with CSS variables
+- Error boundary component
+- Slicers/Filter panel
+- Access DB integration
+- Code quality cleanup
+- CSS enhancements
+
+================================================================================
+PHASE 1: CORE HR ENGINE ✅ DONE
+================================================================================
+1.1 Payroll Management (PayrollTab.tsx)
+    - Egyptian tax brackets + social insurance rates
+    - Payroll engine (payrollEngine.ts) with batch generation
+    - KPI cards, department charts, deduction pie, expandable details
+
+1.2 Contract Management (ContractsTab.tsx)
+    - Fixed-term, Unlimited, Part-time, Probation types
+    - Status tracking, expiry alerts, searchable table
+
+1.3 EOSB/Gratuity Calculator (GratuityCalculator.tsx)
+    - Egyptian Labor Law Article 126 compliant
+    - Department breakdown, rule cards, top 10 table
+
+1.4 Shift Management (ShiftManagement.tsx)
+    - Day selector, attendance status pie, shift type distribution
+    - GPS/QR/Biometric/Manual tracking radar chart
+    - Daily shifts table with status badges
+
+================================================================================
+PHASE 2: EMPLOYEE EXPERIENCE ✅ DONE
+================================================================================
+2.1 ESS Portal (ESSPortal.tsx)
+    - Welcome banner, personal KPI cards, leave balances
+    - Recent payslips chart, quick action buttons
+
+2.2 MSS Portal (MSSPortal.tsx)
+    - Team KPI cards, pending approvals queue
+    - Team performance pie, member table
+
+2.3 Expense Management (ExpensesTab.tsx)
+    - Claim status pie, category bar chart
+    - Inline approve/reject buttons, filter dropdown
+
+2.4 Organization Chart (OrgChart.tsx)
+    - Collapsible tree: Company → Dept → Role → Headcount
+    - Department cards with progress bars, search filter
+
+2.5 Employee Lifecycle (LifecycleTab.tsx)
+    - 6-stage lifecycle flow, onboarding/offboarding checklists
+    - Recent hires & departures table
+
+================================================================================
+PHASE 3: ANALYTICS & REPORTING ✅ DONE
+================================================================================
+3.1 Reports (ReportsTab.tsx)
+    - 4 report types: Headcount, Turnover, Payroll, Attendance
+    - Each with dedicated charts + export button
+
+3.2 Scorecard (ScorecardTab.tsx)
+    - 6 executive KPI cards, HR balanced scorecard radar
+    - Department scorecard bar chart + detail table
+
+3.3 Diversity (DiversityTab.tsx)
+    - Gender pie, age distribution, gender by dept
+    - Education field pie chart
+
+3.4 Workforce Analytics (WorkforceAnalytics.tsx)
+    - Hiring & departure trends, tenure distribution
+    - Absenteeism & overtime by department
+
+================================================================================
+PHASE 4: RECRUITMENT & PERFORMANCE ✅ DONE
+================================================================================
+4.1 Recruitment ATS (RecruitmentTab.tsx)
+    - Kanban pipeline: 6 stages with candidate cards
+    - Job selector, source pie, stage bar chart
+
+4.2 Performance Review (PerformanceReview.tsx)
+    - KPI/OKR scorecard radar, department performance bar
+
+4.3 Training Management (TrainingTab.tsx)
+    - Training distribution, department training chart
+    - Program progress cards with completion bars
+
+================================================================================
+PHASE 5: POLISH & TOOLS ✅ DONE
+================================================================================
+5.1 HR Tools (HRToolsTab.tsx)
+    - Salary & Tax calculator with Egyptian tax brackets
+    - EOSB/Gratuity calculator with dynamic inputs
+
+5.2 Notifications (NotificationsTab.tsx)
+    - All/Unread filters, mark read/mark all read
+    - Color-coded types: Alert, Reminder, Info, Success
+    - Action buttons on notifications
+
+5.3 Documents (DocumentsTab.tsx)
+    - Document repository with type/department/status
+    - Filter by Valid/Expiring/Expired
+    - Expiry tracking with visual alerts
+
+================================================================================
+NEXT RECOMMENDATIONS (Phase 6+)
+================================================================================
+
+1. PRODUCTION BUILD & OPTIMIZATION
+   - Run `npm run build` for production bundle
+   - Analyze bundle size with `npx vite-bundle-visualizer`
+   - Implement lazy loading with React.lazy() for heavy tabs
+   - Add service worker for offline support
+
+2. TESTING
+   - Add Vitest + React Testing Library for component tests
+   - Write payroll engine unit tests
+   - Add E2E tests with Playwright for critical flows
+
+3. BACKEND INTEGRATION
+   - Replace JSON data files with REST API calls
+   - Implement real authentication (JWT/OAuth)
+   - Add database migrations for employee data
+   - Build Express.js API server for HR operations
+
+4. ENHANCED FEATURES
+   - Real-time notifications via WebSocket
+   - Email integration for leave/expense approval workflows
+   - Document upload with cloud storage (S3)
+   - Mobile-responsive PWA with offline support
+   - Bulk import/export (CSV/Excel)
+   - Audit logging for all HR actions
+
+5. DEPLOYMENT
+   - Docker containerization
+   - CI/CD pipeline (GitHub Actions)
+   - Deploy to Vercel/Netlify for frontend
+   - Deploy backend to AWS/GCP
+
+================================================================================
+DEPENDENCIES TO ADD
+================================================================================
+- date-fns (date handling and formatting)
+- xlsx (Excel export for reports)
+- @tanstack/react-query (server state management)
+- zod (runtime validation)
+- lucide-react (already used for all icons ✅)
+
+================================================================================
+FILE INVENTORY (src/ directory)
+================================================================================
+src/
+├── App.tsx (main app with 32 tab renderer)
+├── index.css (dark theme, CSS variables)
+├── main.tsx (entry point)
+├── types/
+│   ├── access-db.ts (Access DB types)
+│   ├── contract.ts (contract types)
+│   ├── employee.ts (core employee)
+│   ├── expense.ts (expense claims)
+│   ├── payroll.ts (payroll/tax rates)
+│   └── recruitment.ts (ATS types)
+├── utils/
+│   ├── i18n.ts (bilingual translations ~1000 lines)
+│   ├── payrollEngine.ts (tax/insurance/payroll engine)
+│   └── usePagination.tsx (pagination hook)
+├── components/
+│   ├── Sidebar.tsx (32-item navigation)
+│   ├── SlicersPanel.tsx (global filters)
+│   ├── StatCard.tsx (reusable KPI card)
+│   ├── ErrorBoundary.tsx
+│   ├── AccessDbTabs.tsx (ODBC wrapper)
+│   ├── OverviewTab.tsx
+│   ├── AttritionTab.tsx
+│   ├── SalaryTab.tsx
+│   ├── SatisfactionTab.tsx
+│   ├── PerformanceTab.tsx
+│   ├── PayrollTab.tsx ✨
+│   ├── ContractsTab.tsx ✨
+│   ├── GratuityCalculator.tsx ✨
+│   ├── ShiftManagement.tsx ✨
+│   ├── ESSPortal.tsx ✨
+│   ├── MSSPortal.tsx ✨
+│   ├── ExpensesTab.tsx ✨
+│   ├── OrgChart.tsx ✨
+│   ├── LifecycleTab.tsx ✨
+│   ├── ReportsTab.tsx ✨
+│   ├── ScorecardTab.tsx ✨
+│   ├── DiversityTab.tsx ✨
+│   ├── WorkforceAnalytics.tsx ✨
+│   ├── RecruitmentTab.tsx ✨
+│   ├── PerformanceReview.tsx ✨
+│   ├── TrainingTab.tsx ✨
+│   ├── HRToolsTab.tsx ✨
+│   ├── NotificationsTab.tsx ✨
+│   ├── DocumentsTab.tsx ✨
+│   ├── PredictorTab.tsx
+│   ├── DataEntryTab.tsx
+│   ├── AttendanceTab.tsx
+│   ├── AdvancesTab.tsx
+│   ├── LeavesTab.tsx
+│   ├── VehiclesTab.tsx
+│   ├── ViolationsTab.tsx
+│   └── SystemUsersTab.tsx
+└── data/
+    ├── hr_data.json
+    └── db.ts
+
+Legend: ✨ = Newly created in Phase 1-5
+
+================================================================================
+END OF PLAN
+================================================================================

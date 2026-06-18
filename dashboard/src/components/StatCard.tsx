@@ -50,7 +50,7 @@ export const StatCard: React.FC<StatCardProps> = ({
             fontSize: '28px', 
             fontWeight: 800, 
             letterSpacing: '-0.03em',
-            fontFamily: 'Outfit, sans-serif'
+            fontFamily: 'var(--font-family)'
           }}
         >
           {value}

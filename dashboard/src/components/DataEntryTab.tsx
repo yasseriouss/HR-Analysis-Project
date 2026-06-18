@@ -378,7 +378,7 @@ export const DataEntryTab: React.FC<DataEntryTabProps> = ({ data, setData, lang 
           <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
             <Database size={20} style={{ color: 'var(--accent-cyan)' }} />
             <h2 style={{ fontSize: '18px', fontWeight: 700, color: 'var(--text-main)', fontFamily: isRtl ? 'Tajawal, sans-serif' : 'inherit' }}>
-              {isRtl ? 'دليل الموظفين' : 'Employee Directory'}
+              {t('dataEntryDirectory', lang)}
             </h2>
           </div>
           
@@ -437,7 +437,7 @@ export const DataEntryTab: React.FC<DataEntryTabProps> = ({ data, setData, lang 
             <div style={{ padding: '40px 0', textAlign: 'center', color: 'var(--text-dim)' }}>
               <Info size={28} style={{ marginBottom: '10px', color: 'var(--text-dim)' }} />
               <p style={{ fontSize: '13px', fontFamily: isRtl ? 'Tajawal, sans-serif' : 'inherit' }}>
-                {isRtl ? 'لا يوجد نتائج تطابق البحث' : 'No matching employee records found'}
+                {t('dataEntryNoResults', lang)}
               </p>
             </div>
           ) : (
@@ -458,7 +458,7 @@ export const DataEntryTab: React.FC<DataEntryTabProps> = ({ data, setData, lang 
                   }}
                 >
                   <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
-                    <span style={{ fontWeight: 700, fontSize: '14px', color: 'var(--text-main)', fontFamily: 'Outfit, sans-serif' }}>
+                    <span style={{ fontWeight: 700, fontSize: '14px', color: 'var(--text-main)', fontFamily: 'var(--font-family)' }}>
                       {emp.EmpID}
                       {emp.Attrition === 'Yes' && (
                         <span style={{ 
@@ -976,10 +976,10 @@ export const DataEntryTab: React.FC<DataEntryTabProps> = ({ data, setData, lang 
                   className="input-select"
                   style={{ fontFamily: isRtl ? 'Tajawal, sans-serif' : 'inherit' }}
                 >
-                  <option value={0}>{isRtl ? 'لا يوجد أسهم (0)' : 'No Stock Options (0)'}</option>
-                  <option value={1}>{isRtl ? 'أساسي (مستوى 1)' : 'Basic (Level 1)'}</option>
-                  <option value={2}>{isRtl ? 'متوسط (مستوى 2)' : 'Higher (Level 2)'}</option>
-                  <option value={3}>{isRtl ? 'تنفيذي (مستوى 3)' : 'Executive (Level 3)'}</option>
+                  <option value={0}>{t('dataEntryStockNone', lang)}</option>
+                  <option value={1}>{t('dataEntryStockBasic', lang)}</option>
+                  <option value={2}>{t('dataEntryStockHigher', lang)}</option>
+                  <option value={3}>{t('dataEntryStockExecutive', lang)}</option>
                 </select>
               </div>
 
@@ -1200,8 +1200,8 @@ export const DataEntryTab: React.FC<DataEntryTabProps> = ({ data, setData, lang 
                   className="input-select"
                   style={{ fontFamily: isRtl ? 'Tajawal, sans-serif' : 'inherit' }}
                 >
-                  <option value={3}>{isRtl ? 'ممتاز (3)' : 'Excellent (3)'}</option>
-                  <option value={4}>{isRtl ? 'متميز (4)' : 'Outstanding (4)'}</option>
+                  <option value={3}>{t('dataEntryPerfExcellent', lang)}</option>
+                  <option value={4}>{t('dataEntryPerfOutstanding', lang)}</option>
                 </select>
               </div>
 
@@ -1295,7 +1295,7 @@ export const DataEntryTab: React.FC<DataEntryTabProps> = ({ data, setData, lang 
                   onMouseOver={(e) => e.currentTarget.style.backgroundColor = 'rgba(255,255,255,0.05)'}
                   onMouseOut={(e) => e.currentTarget.style.backgroundColor = 'transparent'}
                 >
-                  {isRtl ? 'إعادة تعيين' : 'Reset Form'}
+                  {t('dataEntryResetForm', lang)}
                 </button>
                 <button
                   id="btn-submit-form"

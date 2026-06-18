@@ -1,0 +1,1302 @@
+{
+  "database": "HR",
+  "generated": "2026-06-16T10:03:48.770Z",
+  "scope": "full",
+  "keyDocuments": [
+    "_index.md",
+    "_overview.md",
+    "_entrypoints.md",
+    "_critical-objects.md",
+    "_health.md",
+    "_known-issues.md",
+    "_dependencies.md",
+    "_reading-order.md",
+    "_ai-prompt.md",
+    "_guide.md"
+  ],
+  "stats": {
+    "tables": 19,
+    "columns": 181,
+    "primary_keys": 16,
+    "foreign_keys": 10,
+    "indexes": 33,
+    "queries": 19,
+    "relationships": 10,
+    "forms": 47,
+    "reports": 9,
+    "macros": 11,
+    "modules": 0,
+    "linked_tables": 0,
+    "startup_options": 14,
+    "references": 4
+  },
+  "warnings": [
+    "Controles no disponibles para forms:الدخول -> (-2147352567, 'Exception occurred.', (0, None, 'The active content in this file is blocked. Review your Trust Center settings or contact your IT administrator.', None, -1, -2146815095), None)",
+    "Propiedades no disponibles para forms:الدخول -> (-2147352567, 'Exception occurred.', (0, None, 'The active content in this file is blocked. Review your Trust Center settings or contact your IT administrator.', None, -1, -2146815095), None)",
+    "Codigo no disponible para forms:الدخول -> (-2147352567, 'Exception occurred.', (0, None, 'The active content in this file is blocked. Review your Trust Center settings or contact your IT administrator.', None, -1, -2146815095), None)",
+    "Controles no disponibles para forms:نسخة من  سيارات الرئيسي -> (-2147352567, 'Exception occurred.', (0, None, 'The active content in this file is blocked. Review your Trust Center settings or contact your IT administrator.', None, -1, -2146815095), None)",
+    "Propiedades no disponibles para forms:نسخة من  سيارات الرئيسي -> (-2147352567, 'Exception occurred.', (0, None, 'The active content in this file is blocked. Review your Trust Center settings or contact your IT administrator.', None, -1, -2146815095), None)",
+    "Codigo no disponible para forms:نسخة من  سيارات الرئيسي -> (-2147352567, 'Exception occurred.', (0, None, 'The active content in this file is blocked. Review your Trust Center settings or contact your IT administrator.', None, -1, -2146815095), None)",
+    "Controles no disponibles para forms:مدير -> (-2147352567, 'Exception occurred.', (0, None, 'The active content in this file is blocked. Review your Trust Center settings or contact your IT administrator.', None, -1, -2146815095), None)",
+    "Propiedades no disponibles para forms:مدير -> (-2147352567, 'Exception occurred.', (0, None, 'The active content in this file is blocked. Review your Trust Center settings or contact your IT administrator.', None, -1, -2146815095), None)",
+    "Codigo no disponible para forms:مدير -> (-2147352567, 'Exception occurred.', (0, None, 'The active content in this file is blocked. Review your Trust Center settings or contact your IT administrator.', None, -1, -2146815095), None)",
+    "Controles no disponibles para forms:الموظفين -> (-2147352567, 'Exception occurred.', (0, None, 'The active content in this file is blocked. Review your Trust Center settings or contact your IT administrator.', None, -1, -2146815095), None)",
+    "Propiedades no disponibles para forms:الموظفين -> (-2147352567, 'Exception occurred.', (0, None, 'The active content in this file is blocked. Review your Trust Center settings or contact your IT administrator.', None, -1, -2146815095), None)",
+    "Codigo no disponible para forms:الموظفين -> (-2147352567, 'Exception occurred.', (0, None, 'The active content in this file is blocked. Review your Trust Center settings or contact your IT administrator.', None, -1, -2146815095), None)",
+    "Controles no disponibles para forms:الدخول1 -> (-2147352567, 'Exception occurred.', (0, None, 'The active content in this file is blocked. Review your Trust Center settings or contact your IT administrator.', None, -1, -2146815095), None)",
+    "Propiedades no disponibles para forms:الدخول1 -> (-2147352567, 'Exception occurred.', (0, None, 'The active content in this file is blocked. Review your Trust Center settings or contact your IT administrator.', None, -1, -2146815095), None)",
+    "Codigo no disponible para forms:الدخول1 -> (-2147352567, 'Exception occurred.', (0, None, 'The active content in this file is blocked. Review your Trust Center settings or contact your IT administrator.', None, -1, -2146815095), None)",
+    "Controles no disponibles para forms:main -> (-2147352567, 'Exception occurred.', (0, None, 'The active content in this file is blocked. Review your Trust Center settings or contact your IT administrator.', None, -1, -2146815095), None)",
+    "Propiedades no disponibles para forms:main -> (-2147352567, 'Exception occurred.', (0, None, 'The active content in this file is blocked. Review your Trust Center settings or contact your IT administrator.', None, -1, -2146815095), None)",
+    "Codigo no disponible para forms:main -> (-2147352567, 'Exception occurred.', (0, None, 'The active content in this file is blocked. Review your Trust Center settings or contact your IT administrator.', None, -1, -2146815095), None)",
+    "Controles no disponibles para forms:entreusers -> (-2147352567, 'Exception occurred.', (0, None, 'The active content in this file is blocked. Review your Trust Center settings or contact your IT administrator.', None, -1, -2146815095), None)",
+    "Propiedades no disponibles para forms:entreusers -> (-2147352567, 'Exception occurred.', (0, None, 'The active content in this file is blocked. Review your Trust Center settings or contact your IT administrator.', None, -1, -2146815095), None)",
+    "Codigo no disponible para forms:entreusers -> (-2147352567, 'Exception occurred.', (0, None, 'The active content in this file is blocked. Review your Trust Center settings or contact your IT administrator.', None, -1, -2146815095), None)",
+    "Controles no disponibles para forms:Shift -> (-2147352567, 'Exception occurred.', (0, None, 'The active content in this file is blocked. Review your Trust Center settings or contact your IT administrator.', None, -1, -2146815095), None)",
+    "Propiedades no disponibles para forms:Shift -> (-2147352567, 'Exception occurred.', (0, None, 'The active content in this file is blocked. Review your Trust Center settings or contact your IT administrator.', None, -1, -2146815095), None)",
+    "Codigo no disponible para forms:Shift -> (-2147352567, 'Exception occurred.', (0, None, 'The active content in this file is blocked. Review your Trust Center settings or contact your IT administrator.', None, -1, -2146815095), None)",
+    "No se pudo exportar modules:IDAutomationVBA -> (-2147352567, 'Exception occurred.', (0, None, 'The active content in this file is blocked. Review your Trust Center settings or contact your IT administrator.', None, -1, -2146815095), None)",
+    "No se pudo exportar modules:Module1 -> (-2147352567, 'Exception occurred.', (0, None, 'The active content in this file is blocked. Review your Trust Center settings or contact your IT administrator.', None, -1, -2146815095), None)"
+  ],
+  "criticalObjects": [
+    {
+      "kind": "table",
+      "name": "الموظفين",
+      "notePath": "tables/الموظفين",
+      "score": 65,
+      "detail": "2 queries, 0 forms"
+    },
+    {
+      "kind": "form",
+      "name": "مخالفات22",
+      "notePath": "forms/مخالفات22",
+      "score": 43,
+      "detail": "41 controls, 0 procedures"
+    },
+    {
+      "kind": "form",
+      "name": "سلفة المالية",
+      "notePath": "forms/سلفة-المالية",
+      "score": 42,
+      "detail": "40 controls, 0 procedures"
+    },
+    {
+      "kind": "form",
+      "name": "اختيار السيارات 2",
+      "notePath": "forms/اختيار-السيارات-2",
+      "score": 37,
+      "detail": "35 controls, 0 procedures"
+    },
+    {
+      "kind": "table",
+      "name": "المركبات",
+      "notePath": "tables/المركبات",
+      "score": 31,
+      "detail": "4 queries, 0 forms"
+    },
+    {
+      "kind": "report",
+      "name": "مخالفات حسب الاسم22",
+      "notePath": "reports/مخالفات-حسب-الاسم22",
+      "score": 31,
+      "detail": "31 controls, 0 procedures"
+    },
+    {
+      "kind": "report",
+      "name": "مخالفات حسب الاسم المدفوع",
+      "notePath": "reports/مخالفات-حسب-الاسم-المدفوع",
+      "score": 29,
+      "detail": "29 controls, 0 procedures"
+    },
+    {
+      "kind": "report",
+      "name": "SALARY V",
+      "notePath": "reports/SALARY-V",
+      "score": 27,
+      "detail": "27 controls, 0 procedures"
+    },
+    {
+      "kind": "table",
+      "name": "الاقساط",
+      "notePath": "tables/الاقساط",
+      "score": 25,
+      "detail": "4 queries, 0 forms"
+    },
+    {
+      "kind": "table",
+      "name": "المخالفات",
+      "notePath": "tables/المخالفات",
+      "score": 25,
+      "detail": "4 queries, 0 forms"
+    },
+    {
+      "kind": "form",
+      "name": "المركبات",
+      "notePath": "forms/المركبات",
+      "score": 25,
+      "detail": "23 controls, 0 procedures"
+    },
+    {
+      "kind": "report",
+      "name": "مخالفات حسب السيارة22",
+      "notePath": "reports/مخالفات-حسب-السيارة22",
+      "score": 25,
+      "detail": "25 controls, 0 procedures"
+    },
+    {
+      "kind": "form",
+      "name": "بيانات الشركة",
+      "notePath": "forms/بيانات-الشركة",
+      "score": 22,
+      "detail": "20 controls, 0 procedures"
+    },
+    {
+      "kind": "table",
+      "name": "movment",
+      "notePath": "tables/movment",
+      "score": 20,
+      "detail": "2 queries, 0 forms"
+    },
+    {
+      "kind": "report",
+      "name": "مخالفات على المركبةالمدفوع 105",
+      "notePath": "reports/مخالفات-على-المركبةالمدفوع-105",
+      "score": 20,
+      "detail": "20 controls, 0 procedures"
+    },
+    {
+      "kind": "table",
+      "name": "بيانات",
+      "notePath": "tables/بيانات",
+      "score": 19,
+      "detail": "3 queries, 1 forms"
+    },
+    {
+      "kind": "form",
+      "name": "موعد انتهاء التأمين السيارة",
+      "notePath": "forms/موعد-انتهاء-التأمين-السيارة",
+      "score": 18,
+      "detail": "16 controls, 0 procedures"
+    },
+    {
+      "kind": "form",
+      "name": "موعد انتهاء الترخيص",
+      "notePath": "forms/موعد-انتهاء-الترخيص",
+      "score": 18,
+      "detail": "16 controls, 0 procedures"
+    },
+    {
+      "kind": "form",
+      "name": "الاقساط",
+      "notePath": "forms/الاقساط",
+      "score": 17,
+      "detail": "15 controls, 0 procedures"
+    },
+    {
+      "kind": "form",
+      "name": "التأمين السيارة",
+      "notePath": "forms/التأمين-السيارة",
+      "score": 17,
+      "detail": "15 controls, 0 procedures"
+    },
+    {
+      "kind": "form",
+      "name": "انتهاء الترخيص",
+      "notePath": "forms/انتهاء-الترخيص",
+      "score": 16,
+      "detail": "14 controls, 0 procedures"
+    },
+    {
+      "kind": "form",
+      "name": "سيارات الرئيسي1",
+      "notePath": "forms/سيارات-الرئيسي1",
+      "score": 16,
+      "detail": "14 controls, 0 procedures"
+    },
+    {
+      "kind": "form",
+      "name": "مستخدم",
+      "notePath": "forms/مستخدم",
+      "score": 15,
+      "detail": "13 controls, 0 procedures"
+    },
+    {
+      "kind": "table",
+      "name": "main",
+      "notePath": "tables/main",
+      "score": 13,
+      "detail": "1 queries, 0 forms"
+    },
+    {
+      "kind": "form",
+      "name": "نموذج فرعي mov_form",
+      "notePath": "forms/نموذج-فرعي-mov_form",
+      "score": 13,
+      "detail": "11 controls, 0 procedures"
+    }
+  ],
+  "objects": [
+    {
+      "kind": "table",
+      "name": "main",
+      "notePath": "tables/main.md",
+      "outgoing": [
+        "relationships/mainmovment"
+      ],
+      "flags": [],
+      "procedures": 0,
+      "status": "complete"
+    },
+    {
+      "kind": "table",
+      "name": "movment",
+      "notePath": "tables/movment.md",
+      "outgoing": [
+        "relationships/mainmovment",
+        "relationships/الموظفينmovment",
+        "tables/main",
+        "tables/الموظفين"
+      ],
+      "flags": [],
+      "procedures": 0,
+      "status": "complete"
+    },
+    {
+      "kind": "table",
+      "name": "users",
+      "notePath": "tables/users.md",
+      "outgoing": [],
+      "flags": [],
+      "procedures": 0,
+      "status": "complete"
+    },
+    {
+      "kind": "table",
+      "name": "الاقساط",
+      "notePath": "tables/الاقساط.md",
+      "outgoing": [
+        "relationships/الموظفينالاقساط",
+        "tables/الموظفين"
+      ],
+      "flags": [],
+      "procedures": 0,
+      "status": "complete"
+    },
+    {
+      "kind": "table",
+      "name": "البنك",
+      "notePath": "tables/البنك.md",
+      "outgoing": [
+        "relationships/البنكالموظفين"
+      ],
+      "flags": [],
+      "procedures": 0,
+      "status": "complete"
+    },
+    {
+      "kind": "table",
+      "name": "الجنسية",
+      "notePath": "tables/الجنسية.md",
+      "outgoing": [
+        "relationships/الجنسيةالموظفين"
+      ],
+      "flags": [],
+      "procedures": 0,
+      "status": "complete"
+    },
+    {
+      "kind": "table",
+      "name": "الديانة",
+      "notePath": "tables/الديانة.md",
+      "outgoing": [
+        "relationships/الديانةالموظفين"
+      ],
+      "flags": [],
+      "procedures": 0,
+      "status": "complete"
+    },
+    {
+      "kind": "table",
+      "name": "السلفة المالية",
+      "notePath": "tables/السلفة-المالية.md",
+      "outgoing": [
+        "relationships/الموظفينالسلفة-المالية",
+        "tables/الموظفين"
+      ],
+      "flags": [],
+      "procedures": 0,
+      "status": "complete"
+    },
+    {
+      "kind": "table",
+      "name": "المخالفات",
+      "notePath": "tables/المخالفات.md",
+      "outgoing": [
+        "relationships/المركباتالمخالفات",
+        "tables/المركبات"
+      ],
+      "flags": [],
+      "procedures": 0,
+      "status": "complete"
+    },
+    {
+      "kind": "table",
+      "name": "المركبات",
+      "notePath": "tables/المركبات.md",
+      "outgoing": [
+        "relationships/المركباتالمخالفات"
+      ],
+      "flags": [],
+      "procedures": 0,
+      "status": "complete"
+    },
+    {
+      "kind": "table",
+      "name": "المستخدمين",
+      "notePath": "tables/المستخدمين.md",
+      "outgoing": [],
+      "flags": [],
+      "procedures": 0,
+      "status": "complete"
+    },
+    {
+      "kind": "table",
+      "name": "الموظفين",
+      "notePath": "tables/الموظفين.md",
+      "outgoing": [
+        "relationships/البنكالموظفين",
+        "relationships/الجنسيةالموظفين",
+        "relationships/الديانةالموظفين",
+        "relationships/الموظفينmovment",
+        "relationships/الموظفينالاقساط",
+        "relationships/الموظفينالسلفة-المالية",
+        "relationships/الموظفينبيان-الاجازات",
+        "relationships/الوظيفةالموظفين",
+        "tables/البنك",
+        "tables/الجنسية",
+        "tables/الديانة",
+        "tables/الوظيفة"
+      ],
+      "flags": [],
+      "procedures": 0,
+      "status": "complete"
+    },
+    {
+      "kind": "table",
+      "name": "الوظيفة",
+      "notePath": "tables/الوظيفة.md",
+      "outgoing": [
+        "relationships/الوظيفةالموظفين"
+      ],
+      "flags": [],
+      "procedures": 0,
+      "status": "complete"
+    },
+    {
+      "kind": "table",
+      "name": "انواع الاجازات",
+      "notePath": "tables/انواع-الاجازات.md",
+      "outgoing": [],
+      "flags": [],
+      "procedures": 0,
+      "status": "complete"
+    },
+    {
+      "kind": "table",
+      "name": "انواع السيارات",
+      "notePath": "tables/انواع-السيارات.md",
+      "outgoing": [],
+      "flags": [],
+      "procedures": 0,
+      "status": "complete"
+    },
+    {
+      "kind": "table",
+      "name": "بيان الاجازات",
+      "notePath": "tables/بيان-الاجازات.md",
+      "outgoing": [
+        "relationships/الموظفينبيان-الاجازات",
+        "tables/الموظفين"
+      ],
+      "flags": [],
+      "procedures": 0,
+      "status": "complete"
+    },
+    {
+      "kind": "table",
+      "name": "بيانات",
+      "notePath": "tables/بيانات.md",
+      "outgoing": [],
+      "flags": [],
+      "procedures": 0,
+      "status": "complete"
+    },
+    {
+      "kind": "table",
+      "name": "بيانات الشركة",
+      "notePath": "tables/بيانات-الشركة.md",
+      "outgoing": [],
+      "flags": [],
+      "procedures": 0,
+      "status": "complete"
+    },
+    {
+      "kind": "table",
+      "name": "تسجيل الدخول والخروج",
+      "notePath": "tables/تسجيل-الدخول-والخروج.md",
+      "outgoing": [],
+      "flags": [],
+      "procedures": 0,
+      "status": "complete"
+    },
+    {
+      "kind": "query",
+      "name": "1",
+      "notePath": "queries/1.md",
+      "outgoing": [
+        "tables/الاقساط"
+      ],
+      "flags": [],
+      "procedures": 0,
+      "status": "complete"
+    },
+    {
+      "kind": "query",
+      "name": "2",
+      "notePath": "queries/2.md",
+      "outgoing": [
+        "tables/الاقساط"
+      ],
+      "flags": [],
+      "procedures": 0,
+      "status": "complete"
+    },
+    {
+      "kind": "query",
+      "name": "all inq_1",
+      "notePath": "queries/all-inq_1.md",
+      "outgoing": [
+        "tables/main",
+        "tables/movment",
+        "tables/الموظفين"
+      ],
+      "flags": [],
+      "procedures": 0,
+      "status": "complete"
+    },
+    {
+      "kind": "query",
+      "name": "mov_form",
+      "notePath": "queries/mov_form.md",
+      "outgoing": [
+        "tables/movment",
+        "tables/الموظفين"
+      ],
+      "flags": [],
+      "procedures": 0,
+      "status": "complete"
+    },
+    {
+      "kind": "query",
+      "name": "استعلام1",
+      "notePath": "queries/استعلام1.md",
+      "outgoing": [],
+      "flags": [],
+      "procedures": 0,
+      "status": "complete"
+    },
+    {
+      "kind": "query",
+      "name": "الشهري",
+      "notePath": "queries/الشهري.md",
+      "outgoing": [],
+      "flags": [],
+      "procedures": 0,
+      "status": "complete"
+    },
+    {
+      "kind": "query",
+      "name": "المخالفات على العميل 1",
+      "notePath": "queries/المخالفات-على-العميل-1.md",
+      "outgoing": [
+        "tables/المخالفات",
+        "tables/بيانات"
+      ],
+      "flags": [],
+      "procedures": 0,
+      "status": "complete"
+    },
+    {
+      "kind": "query",
+      "name": "بحث عن مخالفات حسب التاريخ",
+      "notePath": "queries/بحث-عن-مخالفات-حسب-التاريخ.md",
+      "outgoing": [
+        "tables/بيانات"
+      ],
+      "flags": [],
+      "procedures": 0,
+      "status": "complete"
+    },
+    {
+      "kind": "query",
+      "name": "بحث مخالفات على العميل",
+      "notePath": "queries/بحث-مخالفات-على-العميل.md",
+      "outgoing": [
+        "tables/المخالفات",
+        "tables/بيانات"
+      ],
+      "flags": [],
+      "procedures": 0,
+      "status": "complete"
+    },
+    {
+      "kind": "query",
+      "name": "تسجيل الخروج",
+      "notePath": "queries/تسجيل-الخروج.md",
+      "outgoing": [],
+      "flags": [],
+      "procedures": 0,
+      "status": "complete"
+    },
+    {
+      "kind": "query",
+      "name": "تسجيل الدخول",
+      "notePath": "queries/تسجيل-الدخول.md",
+      "outgoing": [],
+      "flags": [],
+      "procedures": 0,
+      "status": "complete"
+    },
+    {
+      "kind": "query",
+      "name": "تغير كلمة السر",
+      "notePath": "queries/تغير-كلمة-السر.md",
+      "outgoing": [
+        "tables/المستخدمين"
+      ],
+      "flags": [],
+      "procedures": 0,
+      "status": "complete"
+    },
+    {
+      "kind": "query",
+      "name": "تنبيه بالمخالفات",
+      "notePath": "queries/تنبيه-بالمخالفات.md",
+      "outgoing": [
+        "tables/المخالفات",
+        "tables/المركبات"
+      ],
+      "flags": [],
+      "procedures": 0,
+      "status": "complete"
+    },
+    {
+      "kind": "query",
+      "name": "ستحقاق القسط",
+      "notePath": "queries/ستحقاق-القسط.md",
+      "outgoing": [
+        "tables/الاقساط"
+      ],
+      "flags": [],
+      "procedures": 0,
+      "status": "complete"
+    },
+    {
+      "kind": "query",
+      "name": "سنوي",
+      "notePath": "queries/سنوي.md",
+      "outgoing": [],
+      "flags": [],
+      "procedures": 0,
+      "status": "complete"
+    },
+    {
+      "kind": "query",
+      "name": "عرض الاقساط",
+      "notePath": "queries/عرض-الاقساط.md",
+      "outgoing": [
+        "tables/الاقساط"
+      ],
+      "flags": [],
+      "procedures": 0,
+      "status": "complete"
+    },
+    {
+      "kind": "query",
+      "name": "مخالفات على المركبة",
+      "notePath": "queries/مخالفات-على-المركبة.md",
+      "outgoing": [
+        "tables/المخالفات",
+        "tables/المركبات"
+      ],
+      "flags": [],
+      "procedures": 0,
+      "status": "complete"
+    },
+    {
+      "kind": "query",
+      "name": "موعد انتهاء التأمين",
+      "notePath": "queries/موعد-انتهاء-التأمين.md",
+      "outgoing": [
+        "tables/المركبات"
+      ],
+      "flags": [],
+      "procedures": 0,
+      "status": "complete"
+    },
+    {
+      "kind": "query",
+      "name": "موعد انتهاء الترخيص",
+      "notePath": "queries/موعد-انتهاء-الترخيص.md",
+      "outgoing": [
+        "tables/المركبات"
+      ],
+      "flags": [],
+      "procedures": 0,
+      "status": "complete"
+    },
+    {
+      "kind": "form",
+      "name": "الدخول",
+      "notePath": "forms/الدخول.md",
+      "outgoing": [],
+      "flags": [
+        "code-unavailable",
+        "controls-unavailable",
+        "partial",
+        "properties-unavailable",
+        "recordsource-missing"
+      ],
+      "procedures": 0,
+      "status": "partial"
+    },
+    {
+      "kind": "form",
+      "name": "سلبات الرواتب",
+      "notePath": "forms/سلبات-الرواتب.md",
+      "outgoing": [],
+      "flags": [
+        "recordsource-missing"
+      ],
+      "procedures": 0,
+      "status": "partial"
+    },
+    {
+      "kind": "form",
+      "name": "شاشة الرواتب",
+      "notePath": "forms/شاشة-الرواتب.md",
+      "outgoing": [],
+      "flags": [
+        "recordsource-missing"
+      ],
+      "procedures": 0,
+      "status": "partial"
+    },
+    {
+      "kind": "form",
+      "name": "مستخدم",
+      "notePath": "forms/مستخدم.md",
+      "outgoing": [
+        "tables/بيانات"
+      ],
+      "flags": [],
+      "recordSource": "\"بيانات\"",
+      "procedures": 0,
+      "status": "complete"
+    },
+    {
+      "kind": "form",
+      "name": "مخازن",
+      "notePath": "forms/مخازن.md",
+      "outgoing": [],
+      "flags": [
+        "recordsource-missing"
+      ],
+      "procedures": 0,
+      "status": "partial"
+    },
+    {
+      "kind": "form",
+      "name": "مالى , ادارى",
+      "notePath": "forms/مالى-,-ادارى.md",
+      "outgoing": [],
+      "flags": [
+        "recordsource-missing"
+      ],
+      "procedures": 0,
+      "status": "partial"
+    },
+    {
+      "kind": "form",
+      "name": "الجنسية",
+      "notePath": "forms/الجنسية.md",
+      "outgoing": [],
+      "flags": [],
+      "recordSource": "\"SELECT الجنسية.* FROM الجنسية; \"",
+      "procedures": 0,
+      "status": "complete"
+    },
+    {
+      "kind": "form",
+      "name": "نسخة من  سيارات الرئيسي",
+      "notePath": "forms/نسخة-من-سيارات-الرئيسي.md",
+      "outgoing": [],
+      "flags": [
+        "code-unavailable",
+        "controls-unavailable",
+        "partial",
+        "properties-unavailable",
+        "recordsource-missing"
+      ],
+      "procedures": 0,
+      "status": "partial"
+    },
+    {
+      "kind": "form",
+      "name": "موعد انتهاء التأمين السيارة",
+      "notePath": "forms/موعد-انتهاء-التأمين-السيارة.md",
+      "outgoing": [],
+      "flags": [],
+      "recordSource": "\"SELECT المركبات.[كود المركبة], المركبات.[نوع المركبة], المركبات.الموديل, المركبا\"",
+      "procedures": 0,
+      "status": "complete"
+    },
+    {
+      "kind": "form",
+      "name": "الديانة",
+      "notePath": "forms/الديانة.md",
+      "outgoing": [
+        "tables/الديانة"
+      ],
+      "flags": [],
+      "recordSource": "\"الديانة\"",
+      "procedures": 0,
+      "status": "complete"
+    },
+    {
+      "kind": "form",
+      "name": "انواع السيارات",
+      "notePath": "forms/انواع-السيارات.md",
+      "outgoing": [
+        "tables/انواع-السيارات"
+      ],
+      "flags": [],
+      "recordSource": "\"انواع السيارات\"",
+      "procedures": 0,
+      "status": "complete"
+    },
+    {
+      "kind": "form",
+      "name": "بيانات الشركة",
+      "notePath": "forms/بيانات-الشركة.md",
+      "outgoing": [
+        "tables/بيانات-الشركة"
+      ],
+      "flags": [],
+      "recordSource": "\"بيانات الشركة\"",
+      "procedures": 0,
+      "status": "complete"
+    },
+    {
+      "kind": "form",
+      "name": "موعد انتهاء الترخيص",
+      "notePath": "forms/موعد-انتهاء-الترخيص.md",
+      "outgoing": [],
+      "flags": [],
+      "recordSource": "\"SELECT المركبات.[كود المركبة], المركبات.[نوع المركبة], المركبات.اللون, المركبات.\"",
+      "procedures": 0,
+      "status": "complete"
+    },
+    {
+      "kind": "form",
+      "name": "انتهاء الترخيص",
+      "notePath": "forms/انتهاء-الترخيص.md",
+      "outgoing": [],
+      "flags": [],
+      "recordSource": "\"SELECT المركبات.[كود المركبة], المركبات.[نوع المركبة], المركبات.اللون, المركبات.\"",
+      "procedures": 0,
+      "status": "complete"
+    },
+    {
+      "kind": "form",
+      "name": "اختيار السيارات",
+      "notePath": "forms/اختيار-السيارات.md",
+      "outgoing": [
+        "tables/المركبات"
+      ],
+      "flags": [
+        "recordsource-missing"
+      ],
+      "procedures": 0,
+      "status": "partial"
+    },
+    {
+      "kind": "form",
+      "name": "شعار",
+      "notePath": "forms/شعار.md",
+      "outgoing": [
+        "tables/بيانات-الشركة"
+      ],
+      "flags": [],
+      "recordSource": "\"بيانات الشركة\"",
+      "procedures": 0,
+      "status": "complete"
+    },
+    {
+      "kind": "form",
+      "name": "مدير",
+      "notePath": "forms/مدير.md",
+      "outgoing": [],
+      "flags": [
+        "code-unavailable",
+        "controls-unavailable",
+        "partial",
+        "properties-unavailable",
+        "recordsource-missing"
+      ],
+      "procedures": 0,
+      "status": "partial"
+    },
+    {
+      "kind": "form",
+      "name": "الوظيفة",
+      "notePath": "forms/الوظيفة.md",
+      "outgoing": [
+        "tables/الوظيفة"
+      ],
+      "flags": [],
+      "recordSource": "\"الوظيفة\"",
+      "procedures": 0,
+      "status": "complete"
+    },
+    {
+      "kind": "form",
+      "name": "المركبات",
+      "notePath": "forms/المركبات.md",
+      "outgoing": [],
+      "flags": [],
+      "recordSource": "\"SELECT المركبات.* FROM المركبات WHERE (((المركبات.[نوع المركبة])=[Forms]![نسخة م\"",
+      "procedures": 0,
+      "status": "complete"
+    },
+    {
+      "kind": "form",
+      "name": "بحث عن الوقت",
+      "notePath": "forms/بحث-عن-الوقت.md",
+      "outgoing": [],
+      "flags": [
+        "recordsource-missing"
+      ],
+      "procedures": 0,
+      "status": "partial"
+    },
+    {
+      "kind": "form",
+      "name": "الموظفين",
+      "notePath": "forms/الموظفين.md",
+      "outgoing": [],
+      "flags": [
+        "code-unavailable",
+        "controls-unavailable",
+        "partial",
+        "properties-unavailable",
+        "recordsource-missing"
+      ],
+      "procedures": 0,
+      "status": "partial"
+    },
+    {
+      "kind": "form",
+      "name": "البنك",
+      "notePath": "forms/البنك.md",
+      "outgoing": [
+        "tables/البنك"
+      ],
+      "flags": [],
+      "recordSource": "\"البنك\"",
+      "procedures": 0,
+      "status": "complete"
+    },
+    {
+      "kind": "form",
+      "name": "الاعدادات",
+      "notePath": "forms/الاعدادات.md",
+      "outgoing": [],
+      "flags": [
+        "recordsource-missing"
+      ],
+      "procedures": 0,
+      "status": "partial"
+    },
+    {
+      "kind": "form",
+      "name": "انواع الاجازات",
+      "notePath": "forms/انواع-الاجازات.md",
+      "outgoing": [
+        "tables/انواع-الاجازات"
+      ],
+      "flags": [],
+      "recordSource": "\"انواع الاجازات\"",
+      "procedures": 0,
+      "status": "complete"
+    },
+    {
+      "kind": "form",
+      "name": "التأمين السيارة",
+      "notePath": "forms/التأمين-السيارة.md",
+      "outgoing": [],
+      "flags": [],
+      "recordSource": "\"SELECT المركبات.[كود المركبة], المركبات.[نوع المركبة], المركبات.الموديل, المركبا\"",
+      "procedures": 0,
+      "status": "complete"
+    },
+    {
+      "kind": "form",
+      "name": "بيان الاجازات",
+      "notePath": "forms/بيان-الاجازات.md",
+      "outgoing": [],
+      "flags": [],
+      "recordSource": "\"SELECT [بيان الاجازات].*, [انواع الاجازات].[عدد الايام المتاح للاجازة], [انواع ا\"",
+      "procedures": 0,
+      "status": "complete"
+    },
+    {
+      "kind": "form",
+      "name": "الاقساط",
+      "notePath": "forms/الاقساط.md",
+      "outgoing": [
+        "queries/عرض-الاقساط"
+      ],
+      "flags": [],
+      "recordSource": "\"SELECT [السلفة المالية].[الرقم الوظيفي], الاقساط.المعرف, الاقساط.[تاريخ القسط], \"",
+      "procedures": 0,
+      "status": "complete"
+    },
+    {
+      "kind": "form",
+      "name": "سلفة المالية",
+      "notePath": "forms/سلفة-المالية.md",
+      "outgoing": [],
+      "flags": [],
+      "recordSource": "\"SELECT [السلفة المالية].*, الموظفين.الاسم, الموظفين.[الرقم الوطني], الموظفين.[رق\"",
+      "procedures": 0,
+      "status": "complete"
+    },
+    {
+      "kind": "form",
+      "name": "2",
+      "notePath": "forms/2.md",
+      "outgoing": [],
+      "flags": [],
+      "recordSource": "\"SELECT TOP 4 المركبات.[رقم اللوحة], المركبات.[شعار السيارة]\\015\\012FROM المركبات\"",
+      "procedures": 0,
+      "status": "complete"
+    },
+    {
+      "kind": "form",
+      "name": "ص2",
+      "notePath": "forms/ص2.md",
+      "outgoing": [],
+      "flags": [],
+      "recordSource": "\"SELECT TOP 4 المركبات.[رقم اللوحة], المركبات.[شعار السيارة]\\015\\012FROM المركبات\"",
+      "procedures": 0,
+      "status": "complete"
+    },
+    {
+      "kind": "form",
+      "name": "ص1",
+      "notePath": "forms/ص1.md",
+      "outgoing": [],
+      "flags": [],
+      "recordSource": "\"SELECT TOP 4 المركبات.[رقم اللوحة], المركبات.[شعار السيارة]\\015\\012FROM المركبات\"",
+      "procedures": 0,
+      "status": "complete"
+    },
+    {
+      "kind": "form",
+      "name": "1",
+      "notePath": "forms/1.md",
+      "outgoing": [],
+      "flags": [],
+      "recordSource": "\"SELECT TOP 4 المركبات.[رقم اللوحة], المركبات.[شعار السيارة]\\015\\012FROM المركبات\"",
+      "procedures": 0,
+      "status": "complete"
+    },
+    {
+      "kind": "form",
+      "name": "نسخة من  سيارات الرئيسي1",
+      "notePath": "forms/نسخة-من-سيارات-الرئيسي1.md",
+      "outgoing": [],
+      "flags": [],
+      "recordSource": "\"SELECT المركبات.[كود المركبة], المركبات.[رقم اللوحة], المركبات.الباركود, المركبا\"",
+      "procedures": 0,
+      "status": "complete"
+    },
+    {
+      "kind": "form",
+      "name": "سيارات الرئيسي1",
+      "notePath": "forms/سيارات-الرئيسي1.md",
+      "outgoing": [],
+      "flags": [],
+      "recordSource": "\"SELECT المركبات.* FROM المركبات; \"",
+      "procedures": 0,
+      "status": "complete"
+    },
+    {
+      "kind": "form",
+      "name": "الدخول1",
+      "notePath": "forms/الدخول1.md",
+      "outgoing": [],
+      "flags": [
+        "code-unavailable",
+        "controls-unavailable",
+        "partial",
+        "properties-unavailable",
+        "recordsource-missing"
+      ],
+      "procedures": 0,
+      "status": "partial"
+    },
+    {
+      "kind": "form",
+      "name": "ص3",
+      "notePath": "forms/ص3.md",
+      "outgoing": [],
+      "flags": [],
+      "recordSource": "\"SELECT TOP 4 المركبات.[رقم اللوحة], المركبات.[شعار السيارة]\\015\\012FROM المركبات\"",
+      "procedures": 0,
+      "status": "complete"
+    },
+    {
+      "kind": "form",
+      "name": "3",
+      "notePath": "forms/3.md",
+      "outgoing": [],
+      "flags": [],
+      "recordSource": "\"SELECT TOP 4 المركبات.[رقم اللوحة], المركبات.[شعار السيارة]\\015\\012FROM المركبات\"",
+      "procedures": 0,
+      "status": "complete"
+    },
+    {
+      "kind": "form",
+      "name": "edit main",
+      "notePath": "forms/edit-main.md",
+      "outgoing": [
+        "queries/mov_form"
+      ],
+      "flags": [],
+      "recordSource": "\"SELECT main.* FROM main; \"",
+      "procedures": 0,
+      "status": "complete"
+    },
+    {
+      "kind": "form",
+      "name": "ص4",
+      "notePath": "forms/ص4.md",
+      "outgoing": [],
+      "flags": [],
+      "recordSource": "\"SELECT TOP 4 المركبات.[رقم اللوحة], المركبات.[شعار السيارة]\\015\\012FROM المركبات\"",
+      "procedures": 0,
+      "status": "complete"
+    },
+    {
+      "kind": "form",
+      "name": "4",
+      "notePath": "forms/4.md",
+      "outgoing": [],
+      "flags": [],
+      "recordSource": "\"SELECT TOP 4 المركبات.[رقم اللوحة], المركبات.[شعار السيارة]\\015\\012FROM المركبات\"",
+      "procedures": 0,
+      "status": "complete"
+    },
+    {
+      "kind": "form",
+      "name": "مخالفات22",
+      "notePath": "forms/مخالفات22.md",
+      "outgoing": [],
+      "flags": [],
+      "recordSource": "\"SELECT المخالفات.*, المركبات.[نوع المركبة], المركبات.[صنف السيارة], المركبات.الم\"",
+      "procedures": 0,
+      "status": "complete"
+    },
+    {
+      "kind": "form",
+      "name": "اختيار السيارات 2",
+      "notePath": "forms/اختيار-السيارات-2.md",
+      "outgoing": [
+        "queries/موعد-انتهاء-التأمين",
+        "queries/موعد-انتهاء-الترخيص"
+      ],
+      "flags": [],
+      "recordSource": "\"SELECT المركبات.* FROM المركبات WHERE (((المركبات.[رقم اللوحة])=[TempVars]![r]))\"",
+      "procedures": 0,
+      "status": "complete"
+    },
+    {
+      "kind": "form",
+      "name": "main",
+      "notePath": "forms/main.md",
+      "outgoing": [],
+      "flags": [
+        "code-unavailable",
+        "controls-unavailable",
+        "partial",
+        "properties-unavailable",
+        "recordsource-missing"
+      ],
+      "procedures": 0,
+      "status": "partial"
+    },
+    {
+      "kind": "form",
+      "name": "entreusers",
+      "notePath": "forms/entreusers.md",
+      "outgoing": [],
+      "flags": [
+        "code-unavailable",
+        "controls-unavailable",
+        "partial",
+        "properties-unavailable",
+        "recordsource-missing"
+      ],
+      "procedures": 0,
+      "status": "partial"
+    },
+    {
+      "kind": "form",
+      "name": "تغير كلمة السر",
+      "notePath": "forms/تغير-كلمة-السر.md",
+      "outgoing": [],
+      "flags": [
+        "recordsource-missing"
+      ],
+      "procedures": 0,
+      "status": "partial"
+    },
+    {
+      "kind": "form",
+      "name": "نموذج فرعي mov_form",
+      "notePath": "forms/نموذج-فرعي-mov_form.md",
+      "outgoing": [],
+      "flags": [],
+      "recordSource": "\"SELECT mov_form.[date no], mov_form.[NAME NO], mov_form.DAYS, mov_form.FACTION, \"",
+      "procedures": 0,
+      "status": "complete"
+    },
+    {
+      "kind": "form",
+      "name": "Shift",
+      "notePath": "forms/Shift.md",
+      "outgoing": [],
+      "flags": [
+        "code-unavailable",
+        "controls-unavailable",
+        "partial",
+        "properties-unavailable",
+        "recordsource-missing"
+      ],
+      "procedures": 0,
+      "status": "partial"
+    },
+    {
+      "kind": "report",
+      "name": "الموظفين",
+      "notePath": "reports/الموظفين.md",
+      "outgoing": [
+        "tables/الموظفين"
+      ],
+      "flags": [],
+      "recordSource": "\"الموظفين\"",
+      "procedures": 0,
+      "status": "complete"
+    },
+    {
+      "kind": "report",
+      "name": "مخالفات حسب الاسم المدفوع",
+      "notePath": "reports/مخالفات-حسب-الاسم-المدفوع.md",
+      "outgoing": [],
+      "flags": [],
+      "recordSource": "\"SELECT المخالفات.*, المركبات.[كود المركبة], المركبات.الباركود, المركبات.[نوع الم\"",
+      "procedures": 0,
+      "status": "complete"
+    },
+    {
+      "kind": "report",
+      "name": "طباعة الباركود 3",
+      "notePath": "reports/طباعة-الباركود-3.md",
+      "outgoing": [],
+      "flags": [],
+      "recordSource": "\"SELECT الموظفين.*, الوظيفة.القسم, الوظيفة.الوظيفة FROM الوظيفة INNER JOIN الموظف\"",
+      "procedures": 0,
+      "status": "complete"
+    },
+    {
+      "kind": "report",
+      "name": "كرت شاشة",
+      "notePath": "reports/كرت-شاشة.md",
+      "outgoing": [
+        "tables/بيانات-الشركة"
+      ],
+      "flags": [],
+      "recordSource": "\"SELECT المركبات.[كود المركبة], المركبات.[نوع المركبة], المركبات.[رقم التسجيل], ا\"",
+      "procedures": 0,
+      "status": "complete"
+    },
+    {
+      "kind": "report",
+      "name": "SALARY V",
+      "notePath": "reports/SALARY-V.md",
+      "outgoing": [
+        "queries/all-inq_1"
+      ],
+      "flags": [],
+      "recordSource": "\"all inq_1\"",
+      "procedures": 0,
+      "status": "complete"
+    },
+    {
+      "kind": "report",
+      "name": "مخالفات على المركبةالمدفوع 105",
+      "notePath": "reports/مخالفات-على-المركبةالمدفوع-105.md",
+      "outgoing": [
+        "queries/مخالفات-على-المركبة"
+      ],
+      "flags": [],
+      "recordSource": "\"مخالفات على المركبة\"",
+      "procedures": 0,
+      "status": "complete"
+    },
+    {
+      "kind": "report",
+      "name": "مخالفات حسب السيارة22",
+      "notePath": "reports/مخالفات-حسب-السيارة22.md",
+      "outgoing": [],
+      "flags": [],
+      "recordSource": "\"SELECT المخالفات.*, المركبات.[كود المركبة], المركبات.الباركود, المركبات.[نوع الم\"",
+      "procedures": 0,
+      "status": "complete"
+    },
+    {
+      "kind": "report",
+      "name": "مخالفات حسب الاسم22",
+      "notePath": "reports/مخالفات-حسب-الاسم22.md",
+      "outgoing": [],
+      "flags": [],
+      "recordSource": "\"SELECT المخالفات.*, المركبات.[كود المركبة], المركبات.الباركود, المركبات.[نوع الم\"",
+      "procedures": 0,
+      "status": "complete"
+    },
+    {
+      "kind": "report",
+      "name": "استعلام1",
+      "notePath": "reports/استعلام1.md",
+      "outgoing": [
+        "queries/استعلام1"
+      ],
+      "flags": [],
+      "recordSource": "\"استعلام1\"",
+      "procedures": 0,
+      "status": "complete"
+    }
+  ]
+}

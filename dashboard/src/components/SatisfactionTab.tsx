@@ -252,7 +252,7 @@ export const SatisfactionTab: React.FC<SatisfactionTabProps> = ({ data, lang }) 
                 <YAxis stroke="var(--text-dim)" fontSize={12} tickLine={false} axisLine={false} orientation={isRtl ? 'right' : 'left'} tickFormatter={(value) => `${value}%`} />
                 <Tooltip formatter={(value, _name, props) => {
                   const count = props.payload?.Count ?? 0;
-                  const employeesLabel = isRtl ? 'موظف' : 'employees';
+                  const employeesLabel = t('employeesUnit', lang);
                   const distLabel = t('distribution', lang);
                   const valStr = value !== undefined && value !== null ? (isRtl ? parseFloat(value.toString()).toLocaleString('ar-EG') : value) : '';
                   return [`${valStr}% (${count.toLocaleString(isRtl ? 'ar-EG' : 'en-US')} ${employeesLabel})`, distLabel];

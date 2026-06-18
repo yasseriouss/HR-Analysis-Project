@@ -29,20 +29,20 @@ export const SalaryTab: React.FC<SalaryTabProps> = ({ data, lang }) => {
   const kpis = useMemo(() => {
     const total = data.length;
     if (total === 0) {
-      return { avgIncome: isRtl ? '0 $' : '$0', avgHike: '0.0%', avgTenure: isRtl ? '0 سنوات' : '0 Yrs' };
+      return { avgIncome: t('salaryDefaultIncome', lang), avgHike: '0.0%', avgTenure: t('salaryDefaultTenure', lang) };
     }
     const sumIncome = data.reduce((acc, curr) => acc + curr.MonthlyIncome, 0);
     const avgIncome = isRtl 
-      ? `${(sumIncome / total / 1000).toLocaleString('ar-EG', { minimumFractionDigits: 2, maximumFractionDigits: 2 })} ألف $`
-      : '$' + (sumIncome / total / 1000).toFixed(2) + 'K';
+      ? `${(sumIncome / total / 1000).toLocaleString('ar-EG', { minimumFractionDigits: 2, maximumFractionDigits: 2 })} ${t('unitThousandEgp', lang)}`
+      : '$' + (sumIncome / total / 1000).toFixed(2) + t('unitThousandsK', lang);
     
     const sumHike = data.reduce((acc, curr) => acc + curr.PercentSalaryHike, 0);
     const avgHike = (sumHike / total).toFixed(1) + '%';
     
     const sumTenure = data.reduce((acc, curr) => acc + curr.YearsAtCompany, 0);
     const avgTenure = isRtl 
-      ? `${(sumTenure / total).toLocaleString('ar-EG', { minimumFractionDigits: 1, maximumFractionDigits: 1 })} سنة`
-      : (sumTenure / total).toFixed(1) + ' Yrs';
+      ? `${(sumTenure / total).toLocaleString('ar-EG', { minimumFractionDigits: 1, maximumFractionDigits: 1 })} ${t('unitYear', lang)}`
+      : (sumTenure / total).toFixed(1) + ' ' + t('unitYears', lang);
 
     return { avgIncome, avgHike, avgTenure };
   }, [data, isRtl]);
@@ -184,7 +184,7 @@ export const SalaryTab: React.FC<SalaryTabProps> = ({ data, lang }) => {
                 tickLine={false} 
                 axisLine={false} 
                 orientation={isRtl ? 'right' : 'left'}
-                tickFormatter={(value) => isRtl ? `${(value/1000).toLocaleString('ar-EG')} ألف $` : `$${value/1000}k`}
+                tickFormatter={(value) => isRtl ? `${(value/1000).toLocaleString('ar-EG')} ${t('unitThousandEgp', lang)}` : `$${value/1000}${t('unitThousandsK', lang)}`}
               />
               <Tooltip formatter={(value) => [value ? (isRtl ? `${parseFloat(value.toString()).toLocaleString('ar-EG')} $` : `$${value.toLocaleString()}`) : '', t('avgIncomeLegend', lang)]} />
               <Bar dataKey="Avg Income" fill="url(#purpleCyanGrad)" radius={[4, 4, 0, 0]} barSize={40}>
@@ -284,7 +284,7 @@ export const SalaryTab: React.FC<SalaryTabProps> = ({ data, lang }) => {
                 tickLine={false} 
                 axisLine={false} 
                 orientation={isRtl ? 'right' : 'left'}
-                tickFormatter={(value) => isRtl ? `${(value/1000).toLocaleString('ar-EG')} ألف $` : `$${value/1000}k`}
+                tickFormatter={(value) => isRtl ? `${(value/1000).toLocaleString('ar-EG')} ${t('unitThousandEgp', lang)}` : `$${value/1000}${t('unitThousandsK', lang)}`}
               />
               <Tooltip formatter={(value) => [value ? (isRtl ? `${parseFloat(value.toString()).toLocaleString('ar-EG')} $` : `$${value.toLocaleString()}`) : '', t('avgIncomeLegend', lang)]} />
               <Line 
